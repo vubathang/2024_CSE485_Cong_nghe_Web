@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+}
+
+nav{
+    background-color: darkblue;
+}
+ul{
+    display: flex;
+    list-style-type: none;
+    padding: 10px;
+}
+li{
+    color: white;
+    margin: 5px 10px;
+    text-transform: uppercase;
+}
+
+li:hover {
+    color: #13addc;
+    cursor: pointer;
+}
+
+li:not(:last-child) {
+    /*position: absolute;*/
+    /*content: '';*/
+    /*height: 20px;*/
+    /*background-color: #d3d3d3;*/
+    /*width: 2px;*/
+    /*margin: auto 5px;*/
+    /*vertical-align: middle;*/
+    border-right: 2px solid #d3d3d3;
+    padding-right: 10px;
+}
+
+.show{
+    color: white;
+    text-decoration: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #13addc;
+    min-width: 100px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 5px 7px;
+    text-decoration: none;
+    display: block;
+    text-transform: capitalize;
+}
+
+.dropdown:hover .show{
+    color: #13addc;
+}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown-content a:hover {
+    color: darkblue;
+    font-style: italic;
+}
+
