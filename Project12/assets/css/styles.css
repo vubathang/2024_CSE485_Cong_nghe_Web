@@ -1,0 +1,11 @@
+.bg-header {
+    background-color: #0a1f77;
+}
+
+li > a {
+    padding: 0px 15px!important;
+}
+
+li:not(:last-child) {
+    border-right: 2px solid #d7c8c8;
+}

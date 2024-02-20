@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-family: Roboto;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+.contact {
+    width: 500px;
+    background-color: #f6f6f6;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.text-group-title {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.underline {
+    width: 100%;
+    height: 2px;
+    background-color: #645f5f;
+}
+
+.text-label {
+    font-size: 14px;
+    text-transform: capitalize;
+    width: 150px;
+}
+
+.field {
+    margin: 20px 30px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+}
+
+.field input {
+    border: 1px solid black;
+    width: 100%;
+}
