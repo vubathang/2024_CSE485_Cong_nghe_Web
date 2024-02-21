@@ -12,7 +12,7 @@ body {
 }
 
 .contact {
-    width: 500px;
+    width: 800px;
     background-color: #f6f6f6;
     padding: 15px;
     margin: 0 auto;
@@ -42,7 +42,39 @@ body {
     justify-content: center;
 }
 
-.field input {
+.field .input {
     border: 1px solid black;
     width: 100%;
+}
+
+.form-footer {
+    display: flex;
+    justify-content: end;
+}
+
+.f-btn {
+    text-decoration: none;
+    border: 10px;
+    margin: 30px 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #000000;
+    border: 1px solid black;
+}
+
+#submit:hover {
+    background-color: forestgreen;
+    color: white;
+}
+
+#cancel:hover {
+    background-color: orangered;
+    color: white;
+}
+
+
+/*Utils*/
+.no-border {
+    border: none;
 }
