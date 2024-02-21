@@ -1,4 +1,24 @@
 <?php
+//$titles = array(
+//    "Sales Representative",
+//    "Manager",
+//    "Accountant",
+//    "Engineer",
+//    "HR Specialist",
+//    "Marketing Coordinator"
+//);
+$reports_to = array(
+    "Buchanan",
+    "Suyama",
+    "Leverling",
+    "Peacock",
+    "Fuller",
+    "King",
+    "Callahan",
+    "Dodsworth",
+    "West",
+    "Davolio"
+);
 $countries = array (
     "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Anguilla",
     "Antigua & Barbuda",
