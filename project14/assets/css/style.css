@@ -21,6 +21,7 @@ body {
 .text-group-title {
     margin-top: 20px;
     font-weight: bold;
+    color: blue;
 }
 
 .underline {
@@ -39,12 +40,15 @@ body {
     margin: 20px 30px;
     font-weight: bold;
     display: flex;
-    justify-content: center;
+    justify-content: start;
 }
 
 .field .input {
-    border: 1px solid black;
     width: 100%;
+}
+
+.border-input {
+    border: 1px solid black;
 }
 
 .form-footer {

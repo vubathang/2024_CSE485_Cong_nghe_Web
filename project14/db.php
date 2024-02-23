@@ -8,7 +8,4 @@ $countries = array (
     "Bulgaria", "Burkina Faso", "Burundi", "Vietnam"
 );
 
-$fields = [
-    ['title' => 'name', 'type' => 'text', 'value' => null],
-    ['title' => 'password', 'type' => 'password', 'value' => null]
-];
+$reportTo = ['Buchanan'];
