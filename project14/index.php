@@ -15,7 +15,7 @@
     <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
 </head>
 <body>
-<form>
+<form action="./server.php" method="post">
     <div class="form-content m-3 border border-3 border-warning-subtle">
         <div class="form-section p-3">
             <h3 class="form-section-header border-bottom border-3 border-dark-subtle">Basic Info</h3>
@@ -168,7 +168,7 @@
                             echo generateRandomString(6);
                             ?>
                         </div>
-                        <button type="button" class="border border-0 bg-body">Click to change</button>
+                        <button class="border border-0 bg-body">Click to change</button>
                         <input type="text" id="userInput" name="userInput" style="width: 470px">
                     </div>
                 </div>
@@ -183,15 +183,13 @@
                     <label for="required">* required</label>
                 </div>
                 <div>
-                    <button type="button" class="btn btn-primary p-1" >
+                    <button type="submit" class="btn btn-primary p-1" >
                         <i class="fa-solid fa-floppy-disk me-1"></i>Submit
                     </button>
-                    <button type="button" class="btn btn-danger p-1">
+                    <button class="btn btn-danger p-1">
                         <i class="fa-solid fa-xmark me-1"></i>Cancel
                     </button>
-
                 </div>
-
             </div>
         </div>
         </div>
