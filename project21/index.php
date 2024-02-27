@@ -11,49 +11,61 @@
 </head>
 <body>
 <?php
-include_once "Db.php";
-$itemsPerPage = 9;
+include_once "db.php";
+$itemsPerPage = 3;
 $currentPage = !isset($_GET['page']) ? 1 : $_GET['page'];
 if (isset($products)) {
     $totalPages = ceil(count($products) / $itemsPerPage);
     $currentPageItems = array_slice($products, ($currentPage - 1) * $itemsPerPage, $itemsPerPage);
 }
 ?>
-<h2 class="text-center text-success m-3">Products</h2>
-<div class="product-list d-flex justify-content-center text-center flex-wrap">
+<div class="d-flex justify-content-center">
     <?php if (isset($currentPageItems)) {
         foreach ($currentPageItems as $products): ?>
-           <div class="product col-3" id="<?= $products['id']?>">
-               <img src="<?= $products['img']?>" alt="<?=$products['name']?>" style="width: 200px;">
-               <h3><?= $products['name']?></h3>
-               <p><?= $products['price']?>$</p>
-               <p><?=$products['desc']?></p>
-           </div>
+            <div class="product col-md-3 card m-2 text-center" id="<?= $products['id']?>">
+                <div class="d-flex justify-content-center">
+                    <img src="<?= $products['img']?>" alt="<?=$products['name']?>" style="width: 200px; height: 400px;">
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title"><?= $products['name']?></h4>
+                    <h5 class="card-text text-danger"><?= $products['price']?>$</h5>
+                    <p class="card-text"><?=$products['desc']?></p>
+                    <a href="#" class="btn btn-success card-link">Buy</a>
+                </div>
+            </div>
         <?php endforeach;
     } ?>
 </div>
 
-<div class="pagination d-flex justify-content-center m-3">
-    <?php if ($currentPage > 1): ?>
-        <a href="?page=<?php echo $currentPage - 1; ?>">Previous</a>
-    <?php endif; ?>
-
-    <?php if (isset($totalPages)) {
-        for ($i = 1; $i <= $totalPages; $i++): ?>
-            <?php if ($i == $currentPage): ?>
-                <span class="active"><?php echo $i; ?></span>
-            <?php else: ?>
-                <a href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center mt-3">
+        <li class="page-item">
+            <?php if ($currentPage > 1): ?>
+                <a class="page-link" href="?page=<?php echo $currentPage - 1; ?>">Previous</a>
             <?php endif; ?>
-        <?php endfor;
-    } ?>
-
-    <?php if (isset($totalPages)) {
-        if ($currentPage < $totalPages): ?>
-            <a href="?page=<?php echo $currentPage + 1; ?>">Next</a>
-        <?php endif;
-    } ?>
-</div>
+        </li>
+        <?php if (isset($totalPages)) {
+            for ($i = 1; $i <= $totalPages; $i++): ?>
+                <?php if ($i == $currentPage): ?>
+                    <li class="page-item active">
+                        <span class="page-link active"><?php echo $i; ?></span>
+                    </li>
+                <?php else: ?>
+                    <li class="page-item">
+                        <a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                    </li>
+                <?php endif; ?>
+            <?php endfor;
+        } ?>
+        <li class="page-item">
+            <?php if (isset($totalPages)) {
+                if ($currentPage < $totalPages): ?>
+                    <a class="page-link" href="?page=<?php echo $currentPage + 1; ?>">Next</a>
+                <?php endif;
+            } ?>
+        </li>
+    </ul>
+</nav>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

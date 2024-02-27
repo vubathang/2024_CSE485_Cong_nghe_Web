@@ -8,6 +8,7 @@
     <title>Admin Panel</title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
 <?php
@@ -51,33 +52,44 @@ if (isset($users)) {
                     <td><?= $u['role'] ?></td>
                     <td>
                         <?php if ($u['username'] !== $_SESSION['user_id']): ?>
-                            <a href='edit_user.php?username=<?= $u['username'] ?>'>Edit</a>
+                            <a class="btn btn-primary" href='edit_user.php?username=<?= $u['username'] ?>'>
+                                <i class="fa fa-wrench" aria-hidden="true"></i>
+                            </a>
+
                         <?php endif; ?>
                     </td>
                 </tr>
             <?php endforeach; endif; ?>
     </table>
-    <div class="pagination d-flex justify-content-start m-3">
-        <?php if ($currentPage > 1): ?>
-            <a href="?page=<?php echo $currentPage - 1; ?>">Previous</a>
-        <?php endif; ?>
-
-        <?php if (isset($totalPages)) {
-            for ($i = 1; $i <= $totalPages; $i++): ?>
-                <?php if ($i == $currentPage): ?>
-                    <span class="active"><?php echo $i; ?></span>
-                <?php else: ?>
-                    <a href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center mt-3">
+            <li class="page-item">
+                <?php if ($currentPage > 1): ?>
+                    <a class="page-link" href="?page=<?php echo $currentPage - 1; ?>">Previous</a>
                 <?php endif; ?>
-            <?php endfor;
-        } ?>
-
-        <?php if (isset($totalPages)) {
-            if ($currentPage < $totalPages): ?>
-                <a href="?page=<?php echo $currentPage + 1; ?>">Next</a>
-            <?php endif;
-        } ?>
-    </div>
+            </li>
+            <?php if (isset($totalPages)) {
+                for ($i = 1; $i <= $totalPages; $i++): ?>
+                    <?php if ($i == $currentPage): ?>
+                        <li class="page-item active">
+                            <span class="page-link active"><?php echo $i; ?></span>
+                        </li>
+                    <?php else: ?>
+                        <li class="page-item">
+                            <a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                        </li>
+                    <?php endif; ?>
+                <?php endfor;
+            } ?>
+            <li class="page-item">
+                <?php if (isset($totalPages)) {
+                    if ($currentPage < $totalPages): ?>
+                        <a class="page-link" href="?page=<?php echo $currentPage + 1; ?>">Next</a>
+                    <?php endif;
+                } ?>
+            </li>
+        </ul>
+    </nav>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
 </body>

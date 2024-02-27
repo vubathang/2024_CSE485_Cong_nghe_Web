@@ -25,7 +25,3 @@ $users = [
         "email" => "emilyjohnson@example.com"
     ]
 ];
-class Db
-{
-
-}

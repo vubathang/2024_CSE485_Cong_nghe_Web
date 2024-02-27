@@ -11,7 +11,7 @@
 </head>
 <body>
 <?php
-include_once "Db.php";
+include_once "db.php";
 ?>
 <div class="container mt-5">
     <form action="update_profile.php" method="post" enctype="multipart/form-data" class="form-pro border border-secondary p-3">

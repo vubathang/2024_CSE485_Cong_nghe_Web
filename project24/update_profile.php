@@ -16,7 +16,7 @@ if (isset($users)) {
         if ($u['username'] === $username) {
             $u['name'] = $new_name;
             $u['email'] = $new_email;
-            $db = new Db();
+            $db = new db();
             $db->updateUser($username, $new_name, $new_email);
             break;
         }

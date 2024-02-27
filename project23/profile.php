@@ -1,5 +1,5 @@
 <?php
-include_once 'Db.php';
+include_once 'db.php';
 session_start();
 
 if (!isset($_SESSION['user_id']) || !isset($_COOKIE['logged_in'])) {

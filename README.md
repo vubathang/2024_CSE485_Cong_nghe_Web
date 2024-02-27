@@ -1,5 +1,5 @@
 ### Project 21 - The product category has pagination (GET method)
-![App Screenshot](./project21/assets/screenshots/p1.png)
+![App Screenshot](./project21/assets/screenshots/img.png)
 ### Project 22 - Update user profile with the Upload Avatar feature (POST method)
 ##### User profile page
 ![App Screenshot](./project22/assets/screenshots/i1.png)
@@ -15,10 +15,6 @@
 ![App Screenshot](./project23/assets/screenshots/profile.png)
 
 ### Project 24 - Basic user authentication and authorization with array, Session, Cookies
-##### Login page
-![App Screenshot](./project23/assets/screenshots/login.png)
-##### Error when user not logged in
-![App Screenshot](./project23/assets/screenshots/error.png)
 ##### Admin profile page
 ![App Screenshot](./project24/assets/screenshots/admin-profile.png)
 ##### User profile page
