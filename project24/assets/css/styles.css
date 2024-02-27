@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.col-md-5 {
+    position: relative;
+    width: 350px;
+    height: 500px;
+}
+
+.image-top img,
+.image-bottom img {
+    width: 100%;
+    height: 70px;
+}
+
+.image-top{
+    top: -5px;
+}
+.image-bottom {
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 400px;
+}
+
+input, button{
+    width: 75%;
+}

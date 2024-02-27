@@ -1,0 +1,15 @@
+.input{
+    position: relative;
+}
+.input i {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+}
+
+@media screen and (max-width: 300px) {
+    input{
+        width: 150px;
+    }
+}
