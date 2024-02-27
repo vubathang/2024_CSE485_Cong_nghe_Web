@@ -1,0 +1,22 @@
+body {
+    background-color: #f6f6f6;
+}
+
+.card {
+    background-color: #fff;
+}
+
+.pagination > * {
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid darkblue;
+    text-align: center;
+    padding: 3px 7px;
+    margin-right: 5px;
+    background-color: #fff;
+}
+
+.pagination > *:hover {
+    background-color: blue;
+    color: white;
+}
