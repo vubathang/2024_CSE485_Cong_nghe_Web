@@ -1,41 +1,47 @@
 <?php
 
 function loadModel($modelName) {
-  require(ROOT_PATH.MODEL_FOLDER_NAME.$modelName.'.php');
+	$path = ROOT_PATH.MODEL_FOLDER_NAME.$modelName.'.php';
+	if(!file_exists($path)){
+		die('File model not found!');
+		exit(1);
+	}
+	require($path);
 }
 
-function displayView($viewName) {
-  require(ROOT_PATH.VIEW_FOLDER_NAME.$viewName.'.php');
+function displayView($viewName, array $data = []) {
+	// If access admin, change $role = 'admin/'
+	$role = '';
+	if(isset($_SESSION) && $_SESSION['role'] != 'admin') {
+		$role = 'admin/';
+	}
+	$path = ROOT_PATH.VIEW_FOLDER_NAME.$role.$viewName.'.php';
+	if(!file_exists($path)){
+		die('File service not found!');
+		exit(1);
+	}
+	foreach($data as $key => $value) {
+        $$key = $value;
+    }
+	require($path);
 }
 
 function callService($serviceName) {
-  require(ROOT_PATH.SERVICE_FOLDER_NAME.$serviceName.'Service.php');
-  $serviceObj = $serviceName.'Service';
-  return new $serviceObj;
-}
-
-function accessController($controllerName) {
-  require(ROOT_PATH.CONTROLLER_FOLDER_NAME.$controllerName.'Controller.php');
-  $controllerObj = $controllerName.'Controller';
-  return new $controllerObj;
+	$path = ROOT_PATH.SERVICE_FOLDER_NAME.$serviceName.'Service.php';
+	if(!file_exists($path)){
+		die('File service not found!');
+		exit(1);
+	}
+	require($path);
+	$serviceObj = $serviceName.'Service';
+	return new $serviceObj;
 }
 
 function getConn() {
-  try {
-    return new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USERNAME, DB_PASSWORD);
-  } catch (PDOException $e) {
-    echo $e;
-    return null;
-  }
-}
-
-function runQuery($conn, $query) {
-  try {
-    if($conn) {
-      return $conn->query($query);
-    }
-  } catch (PDOException $e) {
-    echo $e;
-    return null;
-  }
+	try {
+		return new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME, DB_USERNAME, DB_PASSWORD);
+	} catch (PDOException $e) {
+		echo $e;
+		return null;
+	}
 }

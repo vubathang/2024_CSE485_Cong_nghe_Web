@@ -1,5 +1,5 @@
 <?php
 
-class EmployyService {
+class EmployeeService {
   
 }
