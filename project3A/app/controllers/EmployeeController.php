@@ -1,70 +1,104 @@
-<?php 
+<?php
 
-class EmployeeController {
+class EmployeeController
+{
     private $employeeService;
+    private $departmentService;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->employeeService = callService('Employee');
+        $this->departmentService = callService('Department');
     }
-    public function index() {
-        $employees = $this->employeeService->getAllEmployees();
-        displayView('employee/index', [
-            'employees' => $employees
-        ]);
-    }
-    public function show() {
-        $id = $_GET['id'];
-        $employee = $this->employeeService->getEmployeeById($id);
-        displayView('employee/show', [
-            'employee' => $employee
-        ]);
-//        chuyen tu mang sang mang ok -> tai sao phai chuyen tu doi tuong sang mang
-//        vi tinh chat bao dong trong OOP de che dau thong tin
-    }
-    public function add() {
-        //co lay du lieu khong? khong
-        displayView('employee/add');
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            if(isset($_POST['fullName'], $_POST['address'], $_POST['email'], $_POST['phone'], $_POST['position'])) {
+    public function index()
+    {
+        displayView('employee/index', [
+            'employees' => $this->employeeService->getAllEmployees(),
+            'departments' => $this->departmentService->getAllDepartments()
+        ]);
+    }
+
+    public function show()
+    {
+        displayView('employee/show', [
+            'employee' => $this->employeeService->getEmployeeById($_GET['id']),
+            'departments' => $this->departmentService->getAllDepartments()
+        ]);
+    }
+
+    public function create()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['fullName'], $_POST['address'], $_POST['email'], $_POST['phone'], $_POST['position'], $_POST['avatar'], $_POST['departmentId'])) {
                 $fullName = $_POST['fullName'];
                 $address = $_POST['address'];
                 $email = $_POST['email'];
                 $phone = $_POST['phone'];
                 $position = $_POST['position'];
-                $avatar = 'avatar.jpg';
-                $this->employeeService->addEmployee($fullName, $address, $email, $phone, $position, $avatar);
+                $avatar = $_POST['avatar'];
+                $departmentId = $_POST['departmentId'];
+                if ($this->employeeService->addEmployee($fullName, $address, $email, $phone, $position, $avatar, $departmentId)) {
+                    header('Location: ' . DOMAIN . '?controller=employee&action=index');
+                } else {
+                    header('Location: ' . DOMAIN . '?controller=employee&action=create?error=Failed to create employee');
+                }
+                exit;
             }
-            header('Location: '.DOMAIN.'?controller=employee&action=index');
         }
+        displayView('employee/create',
+            ['departments' => $this->departmentService->getAllDepartments()]
+        );
     }
 
-    public function update() {
-        displayView('employee/update', [
-            'employee' => $this->employeeService->getEmployeeById($_GET['id'])
-        ]);
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            if(isset($_POST['fullName'], $_POST['address'], $_POST['email'], $_POST['phone'], $_POST['position'])) {
+    public function edit()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['fullName'], $_POST['address'], $_POST['email'], $_POST['phone'], $_POST['position'], $_POST['avatar'], $_POST['departmentId'])) {
                 $employeeId = $_GET['id'];
                 $fullName = $_POST['fullName'];
                 $address = $_POST['address'];
                 $email = $_POST['email'];
                 $phone = $_POST['phone'];
                 $position = $_POST['position'];
-                $avatar = 'avatar.jpg';
-                $this->employeeService->updateEmployee($employeeId, $fullName, $address, $email, $phone, $position, $avatar);
+                $avatar = $_POST['avatar'];
+                $departmentId = $_POST['departmentId'];
+                if ($this->employeeService->updateEmployee($employeeId, $fullName, $address, $email, $phone, $position, $avatar, $departmentId)) {
+                    header('Location: ' . DOMAIN . '?controller=employee&action=index');
+                } else {
+                    header('Location: ' . DOMAIN . '?controller=employee&action=edit&id=' . $_GET['id'] . '?error=Failed to update employee');
+                }
+                exit;
             }
-            header('Location: '.DOMAIN.'?controller=employee&action=index');
+        }
+        displayView('employee/edit', [
+            'employee' => $this->employeeService->getEmployeeById($_GET['id']),
+            'departments' => $this->departmentService->getAllDepartments()
+        ]);
+    }
+
+    public function delete()
+    {
+        if (isset($_GET['id'])) {
+            if ($this->employeeService->deleteEmployee($_GET['id'])) {
+                header('Location: ' . DOMAIN . '?controller=employee&action=index');
+            } else {
+                header('Location: ' . DOMAIN . '?controller=employee&action=index?error=Failed to delete employee');
+            }
         }
     }
-    public function delete() {
-        $this->employeeService->deleteEmployee($_GET['id']);
-        header('Location: '.DOMAIN.'?controller=employee&action=index');
-    }
-    public function search() {
-        $employees = $this->employeeService->searchEmployee($_POST['keyword']);
-        displayView('employee/index', [
-            'employees' => $employees
-        ]);
+
+    public function search()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['keyword'])) {
+                $keyword = $_POST['keyword'];
+                $employees = $this->employeeService->searchEmployee($keyword);
+                displayView('employee/index', [
+                    'employees' => $employees,
+                    'departments' => $this->departmentService->getAllDepartments()
+                ]);
+            }
+        }
     }
 }
