@@ -1,3 +1,4 @@
+<?php displayView('components/header');?>
 <div class="container mt-5">
     <h1 class="my-3">Edit Employee</h1>
     <?php if (isset($employee)): ?>

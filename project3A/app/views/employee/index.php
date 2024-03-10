@@ -1,11 +1,11 @@
 <?php
 $itemsPerPage = 8;
-session_start();
 $currentPage = $_GET['page'] ?? ($_SESSION['currentPage'] ?? 1);
 $_SESSION['currentPage'] = $currentPage;
 $totalPages = isset($employees) ? ceil(count($employees) / $itemsPerPage) : 6;
 $currentPageItems = array_slice($employees, ($currentPage - 1) * $itemsPerPage, $itemsPerPage);
 ?>
+<?php displayView('components/header')?>
 <div class="container mt-5">
     <h3 class="text-center text-primary text-uppercase my-3">Employee Management</h3>
     <div class="row">

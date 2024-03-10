@@ -59,17 +59,25 @@ class UserService {
         ];
     }
 
-    public function register($username, $password, $role, $fullName, $address, $email, $phone, $position, $employeeId, $avatar) {
-        // $employeeService = callService('Employee');
-        // $employee->addEmployee($fullName, $address, $email, $phone, $position, $avatar);
-        $employeeId = 5;
-
+    public function register($username, $password, $role, $employeeId) {
         $query = "INSERT INTO `".self::TABLE_NAME."` (username, password, role, employeeId) VALUES (:username, :password, :role, :employeeId)";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':username', $username, PDO::PARAM_STR);
         $stmt->bindParam(':password', password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
         $stmt->bindParam(':role', $role, PDO::PARAM_STR);
         $stmt->bindParam(':employeeId', $employeeId, PDO::PARAM_INT);
+        try {
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    public function updateUser($username, $password) {
+        $query = "UPDATE `".self::TABLE_NAME."` SET password = :password WHERE username = :username";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':password', password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
+        $stmt->bindParam(':username', $username, PDO::PARAM_STR);
         try {
             return $stmt->execute();
         } catch (PDOException $e) {

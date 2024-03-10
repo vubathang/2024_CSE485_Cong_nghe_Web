@@ -1,43 +1,47 @@
 <?php displayView('components/header') ?>;
 <div class="d-flex justify-content-center">
-    <form action="#" method="post">
-        <h4 class="p-3">Thông tin cá nhân</h4>
-        <div class="mb-3 w-100">
+    <form class="row container" action="#" method="post">
+        <h4 class="col-12 p-3">Thông tin cá nhân</h4>
+        <div class="mb-3 col-6">
             <label for="username" class="form-label">Tên đăng nhập</label>
-            <input type="text" disabled class="form-control" name="username" id="username" value="<?=$user->getUsername()?>">
+            <input type="text" class="form-control" name="username" id="username" value="<?=$user->getUsername()?>">
         </div>
-        <div class="mb-3 w-100">
+        <div class="mb-3 col-6">
+            <label for="employeeId" class="form-label">Mã nhân viên</label>
+            <input type="text" class="form-control" name="employeeId" id="employeeId" value="<?=$employee->getEmployeeId()?>">
+        </div>
+        <div class="mb-3 col-6">
             <label for="oldPassword" class="form-label">Mật khẩu cũ</label>
             <input type="password" class="form-control" name="oldPassword" id="oldPassword">
         </div>
-        <div class="mb-3 w-100">
+        <div class="mb-3 col-6">
             <label for="newPassword" class="form-label">Mật khẩu mới</label>
             <input type="password" class="form-control" name="newPassword" id="newPassword">
         </div>
-        <!-- <div class="mb-3 w-100">
+        <div class="mb-3 col-6">
             <label for="fullName" class="form-label">Họ và tên</label>
             <input type="text" class="form-control" name="fullName" id="fullName" value="<?=$employee->getFullName()?>">
         </div>
-        <div class="mb-3 w-100">
+        <div class="mb-3 col-6">
             <label for="address" class="form-label">Địa chỉ</label>
-            <input type="text" class="form-control" name="address" id="address" value="<?=$user->getAddress()?>">
+            <input type="text" class="form-control" name="address" id="address" value="<?=$employee->getAddress()?>">
         </div>
-        <div class="mb-3 w-100">
+        <div class="mb-3 col-6">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" name="email" id="email" value="<?=$user->getEmail()?>">
+            <input type="email" class="form-control" name="email" id="email" value="<?=$employee->getEmail()?>">
         </div>
-        <div class="mb-3 w-100">
+        <div class="mb-3 col-6">
             <label for="phone" class="form-label">Số điện thoại</label>
-            <input type="text" class="form-control" name="phone" id="phone" value="<?=$user->getPhone()?>">
+            <input type="text" class="form-control" name="phone" id="phone" value="<?=$employee->getPhone()?>">
         </div>
-        <div class="mb-3 w-100">
+        <div class="mb-3 col-6">
             <label for="position" class="form-label">Chức vụ</label>
-            <input type="text" class="form-control" name="position" id="position" value="<?=$user->getPosition()?>">
+            <input type="text" class="form-control" name="position" id="position" value="<?=$employee->getPosition()?>">
         </div>
-        <div class="mb-3 w-100">
+        <div class="mb-3 col-6">
             <label for="departmentId" class="form-label">Phòng ban</label>
-            <input type="text" class="form-control" name="departmentId" id="departmentId" value="<?=$user->getDepartmentId()?>">
-        </div> -->
+            <input type="text" class="form-control" name="departmentId" id="departmentId" value="<?=$employee->getDepartmentId()?>">
+        </div>
 
         <div class="col-12 mb-3">
             <button type="submit" class="btn btn-primary w-100">Cập nhật</button>

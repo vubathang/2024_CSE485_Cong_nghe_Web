@@ -8,8 +8,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item"><a class="nav-link active fw-bold" aria-current="page" href="#">Trang chủ</a></li>
-            <li class="nav-item"><a class="nav-link fw-bold" href="#">Phòng ban</a></li>
-            <li class="nav-item"><a class="nav-link fw-bold" href="#">Nhân viên</a></li>
+            <li class="nav-item"><a class="nav-link fw-bold" href="<?=DOMAIN.'?controller=department'?>">Phòng ban</a></li>
+            <li class="nav-item"><a class="nav-link fw-bold" href="<?=DOMAIN.'?controller=employee'?>">Nhân viên</a></li>
             <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Dropdown

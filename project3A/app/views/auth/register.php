@@ -5,9 +5,15 @@
             <div class="mb-3 w-100">
                 <input type="text" name="username" class="form-control" placeholder="Tên đăng nhập">
             </div>
+            <?php if( isset($errors['username'])): ?>
+            <p class="text-danger"><?=$errors['username']?></p>
+            <?php endif;?>
             <div class="mb-3 w-100">
                 <input type="password" name="password" class="form-control" placeholder="Mật khẩu">
             </div>
+            <?php if( isset($errors['password'])): ?>
+            <p class="text-danger"><?=$errors['password']?></p>
+            <?php endif;?>
             <div class="mb-3 w-100">
                 <input type="password" class="form-control" placeholder="Nhập lại mật khẩu">
             </div>
@@ -27,8 +33,14 @@
                 <input type="text" name="position" class="form-control" placeholder="Chức vụ">
             </div>
             <div class="mb-5 w-100">
-                <input type="text" name="departmentId" class="form-control" placeholder="Cơ quan">
+                <!-- <input type="text" class="form-control" placeholder="Cơ quan"> -->
+                <select class="form-select" name="departmentId"  aria-label="Default select example">
+                    <?php foreach($departmentCategory as $dc): ?>
+                    <option value="<?=$dc->getDepartmentId()?>"><?=$dc->getDepartmentName()?></option>
+                    <?php endforeach ?>
+                </select>
             </div>
+            
             <div class="mb-3 w-100">
                 <button type="submit" class="btn btn-primary w-100">Đăng kí</button>
             </div>

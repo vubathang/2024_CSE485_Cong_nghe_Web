@@ -1,11 +1,11 @@
 <?php
     $itemsPerPage = 5;
-    session_start();
     $currentPage = $_GET['page'] ?? ($_SESSION['currentPage'] ?? 1);
     $_SESSION['currentPage'] = $currentPage;
     $totalPages = isset($departments) ? ceil(count($departments) / $itemsPerPage) : 6;
     $currentPageItems = array_slice($departments, ($currentPage - 1) * $itemsPerPage, $itemsPerPage);
 ?>
+<?php displayView('components/header');?>
 <div class="container mt-5">
     <h1 class="text-center mb-2">Departments</h1>
     <div class="d-flex justify-content-between my-3">

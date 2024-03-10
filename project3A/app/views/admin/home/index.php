@@ -1,1 +1,2 @@
-ADMIN:HOME:INDEX
+<?php
+header('Location: '.DOMAIN.'?controller=department');

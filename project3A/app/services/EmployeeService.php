@@ -90,4 +90,12 @@ class EmployeeService
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'Employee');
     }
+
+    public function countEmployee() {
+        $query = "SELECT COUNT(*) FROM employees";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $count = $stmt->fetchColumn();
+        return $count;
+    }
 }
