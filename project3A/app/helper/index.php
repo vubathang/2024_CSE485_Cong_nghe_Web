@@ -11,6 +11,7 @@ function loadModel($modelName) {
 
 function displayView($viewName, array $data = []) {
 	// If access admin, change $role = 'admin/'
+
 	$role = '';
 	if(isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
 		$role = 'admin/';
