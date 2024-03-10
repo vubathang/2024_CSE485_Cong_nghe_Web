@@ -1,4 +1,3 @@
-USER:USER:INDEX
 <div class="card w-50 mx-auto p-3">
     <h5 class="card-title"><?=isset($user) ? $user->getUsername() : 'Username'?></h5>
     <p class="card-content"><?=isset($user) ? $user->getPassword() : 'Password'?></p>

@@ -1,7 +1,12 @@
 <?php
+    session_start();
     $controllerName = ucfirst(strtolower($_REQUEST['controller'] ?? 'home'));
     $actionName = strtolower($_REQUEST['action'] ?? 'index');
     
+    if(!isset($_SESSION['uid'])) {
+        $controllerName = 'auth';
+    }
+
     $controllerName .= 'Controller';
 
     $path = ROOT_PATH.CONTROLLER_FOLDER_NAME.$controllerName.'.php';

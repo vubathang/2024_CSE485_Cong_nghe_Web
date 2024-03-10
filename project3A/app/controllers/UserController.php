@@ -17,4 +17,12 @@ class UserController {
             'user' => $user,
         ]);
     }
+
+    public function edit() {
+        $id = $_SESSION['uid'];
+        $user = $this->userService->getUserByEmployeeId($id);
+        displayView('user/edit', [
+            'user' => $user,
+        ]);
+    }
 }
