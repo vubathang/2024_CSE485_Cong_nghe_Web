@@ -10,6 +10,7 @@
             <!-- <li class="nav-item"><a class="nav-link active fw-bold" aria-current="page" href="#">Trang chủ</a></li> -->
             <li class="nav-item"><a class="nav-link fw-bold" href="<?=DOMAIN.'?controller=department'?>">Quản lý phòng ban</a></li>
             <li class="nav-item"><a class="nav-link fw-bold" href="<?=DOMAIN.'?controller=employee'?>">Quản lý nhân viên</a></li>
+            <li class="nav-item"><a class="nav-link fw-bold" href="<?=DOMAIN.'?controller=user'?>">Quản lý tài khoản</a></li>
             <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Dropdown

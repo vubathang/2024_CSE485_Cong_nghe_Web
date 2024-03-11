@@ -9,6 +9,18 @@ class UserService {
         $this->conn = getConn();
     }
 
+    public function getAllUsers() {
+        $query = "SELECT * FROM `".self::TABLE_NAME."`";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $users = [];
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $user = new User($row['username'], $row['password'], $row['role'], $row['employeeId']);
+            $users[] = $user;
+        }
+        return $users;
+    }
+
     public function getUserByUsername($username) {
         $query = "SELECT * FROM `".self::TABLE_NAME."` WHERE username = :username";
         $stmt = $this->conn->prepare($query);

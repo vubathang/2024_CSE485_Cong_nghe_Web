@@ -15,8 +15,10 @@ class UserController {
         if($username) {
             $user = $this->userService->getUserByUsername($username);
         }
+        $users = $this->userService->getAllUsers();
         displayView('user/index', [
             'user' => $user,
+            'users' => $users
         ]);
     }
 
