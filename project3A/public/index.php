@@ -1,5 +1,6 @@
 <?php
 	require_once('../app/config/config.php');
+	require_once('../app/config/features.php');
   	require_once(ROOT_PATH.'/app/helper/index.php');
 ?>
 <!DOCTYPE html>
@@ -16,7 +17,7 @@
   	<div id="root">
     	<?php require_once(ROOT_PATH.'/app/routes/index.php') ?>
   	</div>
-  	<script src="./assets/js/index.js"></script>
+  	<script src="./assets/js/main.js"></script>
   	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

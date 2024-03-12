@@ -4,6 +4,7 @@ $currentPage = $_GET['page'] ?? ($_SESSION['currentPage'] ?? 1);
 $_SESSION['currentPage'] = $currentPage;
 $totalPages = isset($departments) ? ceil(count($departments) / $itemsPerPage) : 6;
 $currentPageItems = array_slice($departments, ($currentPage - 1) * $itemsPerPage, $itemsPerPage);
+$currentPageItems = $departments;
 ?>
 <?php displayView('components/header')?>
 <div class="container mt-5">

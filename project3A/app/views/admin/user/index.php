@@ -29,16 +29,15 @@ $currentPageItems = array_slice($users, ($currentPage - 1) * $itemsPerPage, $ite
                 <th scope="col">Username</th>
                 <th scope="col">Role</th>
                 <th scope="col">EmployeeId</th>
-                <th scope="col">Action</th>
             </tr>
             </thead>
             <tbody>
             <?php if (isset($currentPageItems)): foreach ($currentPageItems as $user): ?>
                 <tr>
-                    <td><?= $user->getUsername() ?></td>
+                    <th><?= $user->getUsername() ?></th>
                     <td><?= $user->getRole() ?></td>
                     <td><?= $user->getEmployeeId() ?></td>
-                    <td class="d-flex justify-content-evenly">
+                    <!-- <td class="d-flex justify-content-evenly">
                         <a href="<?= DOMAIN . '?controller=user&action=show&id=' . $user->getEmployeeId() ?>"
                            class="btn btn-outline-primary">
                             <i class="fas fa-circle-info"></i>
@@ -51,7 +50,7 @@ $currentPageItems = array_slice($users, ($currentPage - 1) * $itemsPerPage, $ite
                            class="btn btn-outline-danger">
                             <i class="fas fa-trash"></i>
                         </a>
-                    </td>
+                    </td> -->
                 </tr>
             <?php endforeach; endif; ?>
             </tbody>

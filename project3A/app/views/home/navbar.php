@@ -3,7 +3,7 @@
         [
             'id' => 1,
             'title' => 'Giới thiệu',
-            'url' => '#'
+            'url' => '#introduce'
         ],
         [
             'id' => 2,

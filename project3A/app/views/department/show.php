@@ -1,3 +1,5 @@
+<?php displayView('components/header')?>
+
 <div class="container mt-5" style="width: 500px;">
     <div class="my-5 me-auto row rounded-3 shadow p-3">
         <h1><?= $department->getDepartmentName() ?></h1>

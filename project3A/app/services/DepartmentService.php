@@ -95,4 +95,17 @@ class DepartmentService
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'Department');
     }
+
+    public function search($value, $col) {
+        $query = "SELECT d1.*, d2.departmentName AS parentDepartmentName FROM departments d1 LEFT JOIN departments d2 ON d1.parentDepartmentId = d2.departmentId WHERE d1.".$col." LIKE ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute(["%".$value."%"]);
+        $departments = [];
+        $stmt->execute();
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $department = new Department($row['departmentId'], $row['departmentName'], $row['address'], $row['email'], $row['phone'], $row['parentDepartmentId'], $row['parentDepartmentName']);
+            $departments[] = $department;
+        }
+        return $departments;
+    }
 }

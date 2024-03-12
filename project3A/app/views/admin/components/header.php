@@ -11,22 +11,9 @@
             <li class="nav-item"><a class="nav-link fw-bold" href="<?=DOMAIN.'?controller=department'?>">Quản lý phòng ban</a></li>
             <li class="nav-item"><a class="nav-link fw-bold" href="<?=DOMAIN.'?controller=employee'?>">Quản lý nhân viên</a></li>
             <li class="nav-item"><a class="nav-link fw-bold" href="<?=DOMAIN.'?controller=user'?>">Quản lý tài khoản</a></li>
-            <!-- <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-            </li> -->
+            
         </ul>
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success me-2" type="submit">Search</button>
-            <div class="dropdown">
+        <div class="dropdown">
                 <button class="btn btn-outline-light" type="button" data-bs-toggle="dropdown" aria-expanded="false" >
                     <img src="./assets/images/login.jpg" style="height: 40px; width: 40px; border-radius: 50%;" alt="">
                 </button>
@@ -36,7 +23,6 @@
                     <!-- <li><a class="dropdown-item" href="#">Another action</a></li> -->
                 </ul>
             </div>
-        </form>
         </div>
     </div>
     </nav>

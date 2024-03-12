@@ -1,8 +1,16 @@
+<?php
+    $chaomung = 'Chào Mừng Bạn Đến với Trang Web Tra Cứu Danh Bạ Điện Tử của Đại Học Thủy Lợi!';
+    $gioithieu = 'Chúng tôi với niềm vinh dự và lòng tự hào chào đón bạn đến với nền tảng tra cứu danh bạ điện tử độc đáo của Đại Học Thủy Lợi. Được thành lập trên cơ sở hơn một thế kỷ của truyền thống giáo dục, chúng tôi cam kết đem đến cho bạn một trải nghiệm tìm kiếm thông tin hiện đại, thuận tiện, và hoàn toàn linh hoạt.';
+    $chatluong = 'Chất Lượng Học Việc và Đội Ngũ Chuyên Gia:';
+    $chatluong2 = 'Đại Học Thủy Lợi là một trung tâm học thuật nổi tiếng, và danh bạ điện tử của chúng tôi là nguồn thông tin đáng tin cậy về cộng đồng học thuật và nhân sự. Với đội ngũ cán bộ, giảng viên, và nhân viên đầy đủ chuyên môn và tận tâm, chúng tôi cam kết cung cấp cho bạn một cổng thông tin chất lượng và đầy đủ.';
+    $tinhnangdacbiet = 'Tính Năng Nổi Bật:';
+?>
+
 <section id="introduce">
-    <h2 class="py-3 text-info"><?=$chaomung?></h2>
-    <p class="fw-semibold"><?=$gioithieu?></p>
-    <h2><?=$chatluong?></h2>
-    <p><?=$chatluong2?></p>
+    <h2 class="py-3 text-dark"><?=$chaomung?></h2>
+    <p class="fw-semibold text-secondary"><?=$gioithieu?></p>
+    <h2 class="py-3 text-dark"><?=$chatluong?></h2>
+    <p class="fw-semibold text-secondary"><?=$chatluong2?></p>
     <h2 class="text-danger"><?=$tinhnangdacbiet?></h2>
     <div class="accordion" id="accordionExample">
         <div class="accordion" id="accordionExample">

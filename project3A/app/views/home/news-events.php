@@ -32,7 +32,7 @@
             <div class="col-6">
                 <h5 class="text-danger"><i class="fa-solid fa-calendar-days pe-3"></i>Sự kiện</h5>
                 <ul class="list-group list-group-flush">
-                <?php foreach ($news as $n):?>
+                <?php foreach ($events as $n):?>
                     <li class="list-group-item"><a class="text-decoration-none" href="">
                         <div class="card border-0 d-flex">
                             <div class="row g-0">
