@@ -13,15 +13,23 @@ $currentPageItems = array_slice($employees, ($currentPage - 1) * $itemsPerPage, 
             foreach ($currentPageItems as $employee):?>
                 <div class="col-lg-3 col-md-4 col-sm-6 col-12 my-3">
                     <div class="card rounded-3 shadow p-3">
-                        <img src="<?= $employee->getAvatar() ?>" class="card-img-top" alt="<?= $employee->getFullName() ?>">
-                        <h5 class="card-title fst-italic mb-3"><?= $employee->getFullName()?></h5>
-                        <p class="card-text"><strong>Name:</strong> <?= $employee->getFullName() ?></p>
-                        <p class="card-text"><strong>Position:</strong> <?= $employee->getPosition() ?></p>
-                        <p class="card-text"><strong>Email:</strong> <?= $employee->getEmail() ?></p>
-                        <p class="card-text"><strong>Phone:</strong> <?= $employee->getPhone() ?></p>
-                        <p class="card-text"><strong>Department:</strong> <?= $employee->getDepartmentName() ?></p>
+                        <?php
+                            $avatar = $employee->getAvatar();
+                            if (!file_exists($avatar)) {
+                                $avatar = './assets/images/default.png';
+                            }
+                        ?> 
+                        <div class="d-flex align-items-center">
+                            <img src="<?= $avatar ?>" class="me-3" style="height: 32px; width: 32px;" alt="<?= $employee->getFullName() ?>">
+                            <h5 class="" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" ><?= $employee->getFullName()?></h5>
+                        </div>
+                        <!-- <p class="card-text"><strong>Name:</strong> <?= $employee->getFullName() ?></p> -->
+                        <p class="card-text mb-1" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" ><strong>Vị trí:</strong> <?= $employee->getPosition() ?></p>
+                        <!-- <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><strong>Email:</strong> <?= $employee->getEmail() ?></p> -->
+                        <!-- <p class="card-text"><strong>Phone:</strong> <?= $employee->getPhone() ?></p> -->
+                        <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" ><strong>Cơ quan:</strong> <?= $employee->getDepartmentName() ?></p>
                         <a href="<?= DOMAIN.'?controller=employee&action=show&id='.$employee->getEmployeeId()?>"
-                           class="btn bg-info-subtle border border-info rounded-2">Detail</a>
+                           class="btn bg-info-subtle border border-info rounded-2 fw-semibold">Chi tiết</a>
                     </div>
                 </div>
             <?php endforeach; endif; ?>

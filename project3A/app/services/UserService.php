@@ -71,19 +71,27 @@ class UserService {
         ];
     }
 
-    public function register($username, $password, $role, $employeeId) {
-        $query = "INSERT INTO `".self::TABLE_NAME."` (username, password, role, employeeId) VALUES (:username, :password, :role, :employeeId)";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':username', $username, PDO::PARAM_STR);
-        $stmt->bindParam(':password', password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
-        $stmt->bindParam(':role', $role, PDO::PARAM_STR);
-        $stmt->bindParam(':employeeId', $employeeId, PDO::PARAM_INT);
+    public function register(array $data_employee, $username, $password) {
         try {
-            return $stmt->execute();
+            $this->conn->beginTransaction();
+    
+            $employeeQuery = "INSERT INTO employees (fullName, address, email, phone, position, avatar, departmentId) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $employeeStmt = $this->conn->prepare($employeeQuery);
+            $employeeStmt->execute($data_employee);
+    
+            $employeeId = $this->conn->lastInsertId();
+            $role = 'regular';
+    
+            $userQuery = "INSERT INTO `".self::TABLE_NAME."` (username, password, role, employeeId)
+                          VALUES (?, ?, ?, ?)";
+            $userStmt = $this->conn->prepare($userQuery);
+            $userStmt->execute([$username, password_hash($password, PASSWORD_DEFAULT), $role, $employeeId]);
+            $this->conn->commit();
+            return true;
         } catch (PDOException $e) {
             return false;
         }
-    }
+    }    
 
     public function updateUser($username, $password) {
         $query = "UPDATE `".self::TABLE_NAME."` SET password = :password WHERE username = :username";

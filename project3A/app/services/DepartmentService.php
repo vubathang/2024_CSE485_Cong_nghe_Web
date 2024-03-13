@@ -13,7 +13,7 @@ class DepartmentService
     public function getAllDepartments()
     {
         $query = "SELECT d1.*, d2.departmentName AS parentDepartmentName
-                FROM departments d1 LEFT JOIN departments d2 ON d1.parentDepartmentId = d2.departmentId";
+                FROM departments d1 LEFT JOIN departments d2 ON d1.parentDepartmentId = d2.departmentId  ORDER BY d1.departmentId DESC";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         $departments = [];

@@ -28,7 +28,6 @@ $currentPageItems = array_slice($users, ($currentPage - 1) * $itemsPerPage, $ite
             <tr>
                 <th scope="col">Username</th>
                 <th scope="col">Role</th>
-                <th scope="col">EmployeeId</th>
             </tr>
             </thead>
             <tbody>
@@ -36,7 +35,6 @@ $currentPageItems = array_slice($users, ($currentPage - 1) * $itemsPerPage, $ite
                 <tr>
                     <th><?= $user->getUsername() ?></th>
                     <td><?= $user->getRole() ?></td>
-                    <td><?= $user->getEmployeeId() ?></td>
                     <!-- <td class="d-flex justify-content-evenly">
                         <a href="<?= DOMAIN . '?controller=user&action=show&id=' . $user->getEmployeeId() ?>"
                            class="btn btn-outline-primary">

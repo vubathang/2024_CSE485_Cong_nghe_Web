@@ -1,6 +1,6 @@
 <?php displayView('components/header') ?>;
 <div class="d-flex justify-content-center">
-    <form class="row container" action="#" method="post">
+    <form class="row container w-50" action="#" method="post">
         <h4 class="col-12 p-3">Thông tin cá nhân</h4>
         <div class="mb-3 col-6">
             <label for="username-edit" class="form-label" >Tên đăng nhập</label>
@@ -44,7 +44,7 @@
             <input type="text" class="form-control" name="departmentId" id="departmentId" value="<?=$employee->getDepartmentId()?>">
         </div> -->
         <div class="mb-3 col-6">
-            <label for="departmentId" class="form-label">Phòng ban</label>
+            <label for="departmentId" class="form-label">Đơn vị</label>
             <!-- <input type="text" class="form-control" placeholder="Cơ quan"> -->
             <select class="form-select" name="departmentId"  aria-label="Default select example">
                 <?php foreach($deparments as $dc): ?>
@@ -57,8 +57,28 @@
             </select>
         </div>
 
-        <div class="col-12 mb-3">
-            <button type="submit" class="btn btn-primary w-100">Sửa</button>
-        </div>
+        <div class="mb-3">
+                <button type="button" class="btn btn-success w-100" data-bs-toggle="modal" data-bs-target="#save-info-department">Lưu</button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="save-info-department" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Thông báo</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Bạn có chắc muốn thay đổi thông tin ? 
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                        <button type="submit" class="btn btn-success">Lưu</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <a href="<?=DOMAIN?>?controller=home" class="text-end icon-link-hover text-decoration-none text-dark"><i class="fa-solid fa-backward me-2"></i>Trở lại</a>
     </form> 
 </div>

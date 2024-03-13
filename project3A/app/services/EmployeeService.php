@@ -14,7 +14,7 @@ class EmployeeService
     {
         $query = "SELECT e.*, d.departmentName
                 FROM employees e
-                LEFT JOIN departments d ON e.departmentId = d.departmentId";
+                LEFT JOIN departments d ON e.departmentId = d.departmentId ORDER BY e.employeeId DESC";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         $employees = [];

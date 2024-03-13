@@ -18,16 +18,20 @@
             <p class="fw-semibold">Trường Đại Học Thủy Lợi</p>
             <div class="mb-3 w-100">
                 <label for="username" class="form-label">Tên đăng nhập</label>
-                <input type="text" required class="form-control" name="username" id="username" placeholder="Tên đăng nhập">
+                <input type="text" required class="form-control" name="username" id="username" placeholder="Tên đăng nhập"
+                    value="<?= $_SESSION['username_login'] ?? ''?>"
+                >
             </div>
             <div class="mb-3 w-100">
                 <label for="password" class="form-label">Mật khẩu</label>
-                <input type="password" required class="form-control" id="password" name="password" placeholder="Mật khẩu">
+                <input type="password" required class="form-control" id="password" name="password" placeholder="Mật khẩu"
+                    value="<?= $_SESSION['password_login'] ?? ''?>"
+                >
             </div>
             <div class="col-12 mb-3">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
+                    <input class="form-check-input" <?= isset($_SESSION['rememberAcc']) ? 'checked' : ''?> type="checkbox" name="rememberAcc" id="rememberAcc">
+                    <label class="form-check-label" for="rememberAcc">
                         Nhớ tài khoản
                     </label>
                 </div>

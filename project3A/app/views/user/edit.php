@@ -38,13 +38,44 @@
             <label for="position" class="form-label">Chức vụ</label>
             <input type="text" class="form-control" name="position" id="position" value="<?=$employee->getPosition()?>">
         </div>
-        <div class="mb-3 col-6">
+        <!-- <div class="mb-3 col-6">
             <label for="departmentId" class="form-label">Phòng ban</label>
             <input type="text" class="form-control" name="departmentId" id="departmentId" value="<?=$employee->getDepartmentId()?>">
+        </div> -->
+        <div class="mb-3 col-6">
+            <label for="departmentId" class="form-label">Phòng ban</label>
+            <!-- <input type="text" class="form-control" placeholder="Cơ quan"> -->
+            <select class="form-select" name="departmentId"  aria-label="Default select example">
+                <?php foreach($deparments as $dc): ?>
+                    <?php if($employee->getDepartmentId() == $dc->getDepartmentId()):?>
+                    <option selected value="<?=$dc->getDepartmentId()?>"><?=$dc->getDepartmentName()?></option>
+                    <?php else:?>
+                    <option value="<?=$dc->getDepartmentId()?>"><?=$dc->getDepartmentName()?></option>
+                    <?php endif;?>
+                <?php endforeach ?>
+            </select>
         </div>
-
         <div class="col-12 mb-3">
-            <button type="submit" class="btn btn-primary w-100">Cập nhật</button>
+            <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#save-info-user">Lưu</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="save-info-user" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Cảnh báo</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Bạn có chắc muốn thay đổi thông tin ? 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="submit" class="btn btn-success">Lưu</button>
+                </div>
+                </div>
+            </div>
+            </div>
         </div>
     </form> 
 </div>

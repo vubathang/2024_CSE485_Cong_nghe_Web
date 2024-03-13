@@ -4,38 +4,39 @@
     $_SESSION['currentPage'] = $currentPage;
     $totalPages = isset($departments) ? ceil(count($departments) / $itemsPerPage) : 6;
     $currentPageItems = array_slice($departments, ($currentPage - 1) * $itemsPerPage, $itemsPerPage);
+    $indexDepartment = ($currentPage - 1) * $itemsPerPage;
 ?>
 <?php displayView('components/header');?>
 <div class="container mt-5">
-    <h1 class="text-center mb-2">Departments</h1>
+    <h1 class="text-center mb-2">Đơn vị</h1>
     <div class="d-flex justify-content-between my-3">
         <a href="<?= DOMAIN . '?controller=department&action=create' ?>" class="btn btn-success">
-            Create <i class="fas fa-plus"></i>
+            Thêm mới <i class="fas fa-plus"></i>
         </a>
         <form action="<?= DOMAIN . '?controller=department&action=search' ?>" method="post" class="d-flex">
             <label class="me-2">
-                <input type="text" class="form-control" name="keyword" placeholder="Search">
+                <input type="text" class="form-control" name="keyword" placeholder="Khoa công nghệ thông tin">
             </label>
-            <button type="submit" class="btn btn-outline-success">Search</button>
+            <button type="submit" class="btn btn-outline-success">Tìm kiếm</button>
         </form>
     </div>
     <div class="table-responsive">
         <table class="table table-hover table-striped table-bordered align-middle">
             <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Address</th>
-                <th scope="col">Email</th>
-                <th scope="col">Phone</th>
-                <th scope="col">Parent Department</th>
-                <th scope="col">Action</th>
+                <th scope="col" class="text-center">STT</th>
+                <th scope="col" class="text-center">Tên đơn vị</th>
+                <th scope="col" class="text-center">Địa chỉ</th>
+                <th scope="col" class="text-center">Email</th>
+                <th scope="col" class="text-center">Số điện thoại</th>
+                <th scope="col" class="text-center" >Thuộc đơn vị</th>
+                <th scope="col" class="text-center">Thao tác</th>
             </tr>
             </thead>
             <tbody>
             <?php if (isset($currentPageItems)): foreach ($currentPageItems as $department): ?>
                 <tr>
-                    <td><?= $department->getDepartmentId() ?></td>
+                    <td><?= ++$indexDepartment ?></td>
                     <td><?= $department->getDepartmentName() ?></td>
                     <td><?= $department->getAddress() ?></td>
                     <td><?= $department->getEmail() ?></td>
@@ -50,10 +51,27 @@
                            class="btn btn-outline-warning">
                             <i class="fas fa-pen-to-square"></i>
                         </a>
-                        <a href="<?= DOMAIN . '?controller=department&action=delete&id=' . $department->getDepartmentId() ?>"
+                        <a data-bs-toggle="modal" data-bs-target="#save-info-department"
                            class="btn btn-outline-danger">
                             <i class="fas fa-trash"></i>
                         </a>
+                        <div class="modal fade" id="save-info-department" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Thông báo</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Bạn có chắc muốn xóa đơn vị? 
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                    <a class="btn btn-danger" href="<?= DOMAIN . '?controller=department&action=delete&id=' . $department->getDepartmentId() ?>">Xóa</a>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             <?php endforeach; endif; ?>

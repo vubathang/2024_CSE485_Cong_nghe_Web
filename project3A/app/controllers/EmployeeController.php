@@ -30,15 +30,15 @@ class EmployeeController
     public function create()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (isset($_POST['fullName'], $_POST['address'], $_POST['email'], $_POST['phone'], $_POST['position'], $_POST['avatar'], $_POST['departmentId'])) {
+            if (isset($_POST['fullName'], $_POST['address'], $_POST['email'], $_POST['phone'], $_POST['position'], $_POST['departmentId'])) {
                 $fullName = $_POST['fullName'];
                 $address = $_POST['address'];
                 $email = $_POST['email'];
                 $phone = $_POST['phone'];
                 $position = $_POST['position'];
-                $avatar = $_POST['avatar'];
+                // $avatar = $_POST['avatar'];
                 $departmentId = $_POST['departmentId'];
-                if ($this->employeeService->addEmployee($fullName, $address, $email, $phone, $position, $avatar, $departmentId)) {
+                if ($this->employeeService->createEmployee($fullName, $address, $email, $phone, $position, 'avatar.jpg', $departmentId)) {
                     header('Location: ' . DOMAIN . '?controller=employee&action=index');
                 } else {
                     header('Location: ' . DOMAIN . '?controller=employee&action=create?error=Failed to create employee');
@@ -51,10 +51,11 @@ class EmployeeController
         );
     }
 
+    // public function updateEmployee($employeeId, $fullName, $address, $email, $phone, $position, $avatar, $departmentId)
     public function edit()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (isset($_POST['fullName'], $_POST['address'], $_POST['email'], $_POST['phone'], $_POST['position'], $_POST['avatar'], $_POST['departmentId'])) {
+            if (isset($_POST['fullName'], $_POST['address'], $_POST['email'], $_POST['phone'], $_POST['position'], $_POST['departmentId'])) {
                 $employeeId = $_GET['id'];
                 $fullName = $_POST['fullName'];
                 $address = $_POST['address'];
@@ -63,7 +64,7 @@ class EmployeeController
                 $position = $_POST['position'];
                 $avatar = $_POST['avatar'];
                 $departmentId = $_POST['departmentId'];
-                if ($this->employeeService->updateEmployee($employeeId, $fullName, $address, $email, $phone, $position, $avatar, $departmentId)) {
+                if ($this->employeeService->updateEmployee($employeeId, $fullName, $address, $email, $phone, $position, 'avatar.jpg', $departmentId)) {
                     header('Location: ' . DOMAIN . '?controller=employee&action=index');
                 } else {
                     header('Location: ' . DOMAIN . '?controller=employee&action=edit&id=' . $_GET['id'] . '?error=Failed to update employee');
