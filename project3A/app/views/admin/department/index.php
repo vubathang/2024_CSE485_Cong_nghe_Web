@@ -9,6 +9,11 @@
 <?php displayView('components/header');?>
 <div class="container mt-5">
     <h1 class="text-center mb-2">Đơn vị</h1>
+    <?php if (isset($_GET['error'])): ?>
+        <div class="alert alert-danger">
+            <?php echo htmlspecialchars(urldecode($_GET['error'])); ?>
+        </div>
+    <?php endif; ?>
     <div class="d-flex justify-content-between my-3">
         <a href="<?= DOMAIN . '?controller=department&action=create' ?>" class="btn btn-success">
             Thêm mới <i class="fas fa-plus"></i>
@@ -29,7 +34,7 @@
                 <th scope="col" class="text-center">Địa chỉ</th>
                 <th scope="col" class="text-center">Email</th>
                 <th scope="col" class="text-center">Số điện thoại</th>
-                <th scope="col" class="text-center" >Thuộc đơn vị</th>
+                <th scope="col" class="text-center">Thuộc đơn vị</th>
                 <th scope="col" class="text-center">Thao tác</th>
             </tr>
             </thead>
