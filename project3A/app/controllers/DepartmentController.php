@@ -11,7 +11,17 @@ class DepartmentController
 
     public function index()
     {
-        displayView('department/index', ['departments' => $this->departmentService->getAllDepartments()]);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['keyword'])) {
+                $keyword = $_POST['keyword'];
+                $this->search($keyword, 'departmentName');
+
+            }
+        }else {
+            displayView('department/index', [
+                'departments' => $this->departmentService->getAllDepartments()
+            ]);
+        }
     }
 
     public function show()
@@ -74,7 +84,9 @@ class DepartmentController
         }
     }
 
-    public function search()
+    public function search($keyword, $colName)
     {
+        $deparments = $this->departmentService->search($keyword, $colName);
+        displayView('department/index', ['departments' => $deparments]);
     }
 }

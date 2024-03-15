@@ -4,11 +4,11 @@
         <h4 class="col-12 p-3">Thông tin cá nhân</h4>
         <div class="mb-3 col-6">
             <label for="username" class="form-label">Tên đăng nhập</label>
-            <input type="text" class="form-control" name="username" id="username" value="<?=$user->getUsername()?>">
+            <input type="text" class="form-control" name="username" id="username" value="<?=$user->getUsername()?>" readonly>
         </div>
         <div class="mb-3 col-6">
             <label for="employeeId" class="form-label">Mã nhân viên</label>
-            <input type="text" class="form-control" name="employeeId" id="employeeId" value="<?=$employee->getEmployeeId()?>">
+            <input type="text" class="form-control" name="employeeId" id="employeeId" value="<?=$employee->getEmployeeId()?>" readonly>
         </div>
         <div class="mb-3 col-6">
             <label for="oldPassword" class="form-label">Mật khẩu cũ</label>
