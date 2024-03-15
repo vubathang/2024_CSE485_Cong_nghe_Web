@@ -80,9 +80,11 @@ class AuthController {
                     $password
                 );
                 if($result) {
-                    header('Location : '.DOMAIN);
+                    echo "H";
+                    echo 'Location : '.DOMAIN;
+                    header('Location: '.DOMAIN);
                 }
-            } catch(Exception $e) {
+            } catch(PDOException $e) {
                 $errors[] = $e;
             }
         }

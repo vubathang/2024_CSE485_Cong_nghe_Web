@@ -3,20 +3,29 @@
 class EmployeeController
 {
     private $employeeService;
+    private $userService;
     private $departmentService;
 
     public function __construct()
     {
         $this->employeeService = callService('Employee');
         $this->departmentService = callService('Department');
+        $this->userService = callService('User');
     }
 
     public function index()
     {
-        displayView('employee/index', [
-            'employees' => $this->employeeService->getAllEmployees(),
-            'departments' => $this->departmentService->getAllDepartments()
-        ]);
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (isset($_POST['keyword'])) {
+                $keyword = $_POST['keyword'];
+                $this->search($keyword, 'fullName');
+            }
+        } else {
+            displayView('employee/index', [
+                'employees' => $this->employeeService->getAllEmployees(),
+                'departments' => $this->departmentService->getAllDepartments()
+            ]);
+        }
     }
 
     public function show()
@@ -81,25 +90,23 @@ class EmployeeController
     public function delete()
     {
         if (isset($_GET['id'])) {
-            if ($this->employeeService->deleteEmployee($_GET['id'])) {
-                header('Location: ' . DOMAIN . '?controller=employee&action=index');
+            if ($this->employeeService->getEmployeeById($_GET['id']) == null) {
+                header('Location: ' . DOMAIN . '?controller=employee&action=index?error=Employee not found');
             } else {
-                header('Location: ' . DOMAIN . '?controller=employee&action=index?error=Failed to delete employee');
+                if ($this->userService->deleteUserByEmployeeId($_GET['id'])) {
+                    $this->employeeService->deleteEmployee($_GET['id']);
+                    header('Location: ' . DOMAIN . '?controller=employee&action=index');
+                };
             }
         }
     }
 
-    public function search()
+    public function search($keyword, $colName)
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (isset($_POST['keyword'])) {
-                $keyword = $_POST['keyword'];
-                $employees = $this->employeeService->searchEmployee($keyword);
-                displayView('employee/index', [
-                    'employees' => $employees,
-                    'departments' => $this->departmentService->getAllDepartments()
-                ]);
-            }
-        }
+        $employees = $this->employeeService->search($keyword, $colName);
+        displayView('employee/index', [
+            'employees' => $employees,
+            'departments' => $this->departmentService->getAllDepartments()
+        ]);
     }
 }

@@ -8,7 +8,7 @@ $currentPageItems = $departments;
 ?>
 <?php displayView('components/header')?>
 <div class="container mt-5">
-    <h3 class="text-center text-primary text-uppercase my-3">Department Management</h3>
+    <h3 class="text-center text-primary text-uppercase my-3">Thông tin đơn vị</h3>
     <div class="row">
         <?php if (isset($currentPageItems)):
             foreach ($currentPageItems as $department):?>
