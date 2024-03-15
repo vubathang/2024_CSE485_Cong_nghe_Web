@@ -11,8 +11,9 @@ function loadModel($modelName) {
 
 function displayView($viewName, array $data = []) {
 	// If access admin, change $role = 'admin/'
+
 	$role = '';
-	if(isset($_SESSION) && $_SESSION['role'] != 'admin') {
+	if(isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
 		$role = 'admin/';
 	}
 	$path = ROOT_PATH.VIEW_FOLDER_NAME.$role.$viewName.'.php';

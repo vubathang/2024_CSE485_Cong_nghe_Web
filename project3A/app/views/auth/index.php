@@ -1,0 +1,2 @@
+<?php
+    displayView('auth/login');

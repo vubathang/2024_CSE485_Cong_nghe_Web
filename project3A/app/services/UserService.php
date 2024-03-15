@@ -2,14 +2,27 @@
 
 class UserService {
     private $conn;
+    const TABLE_NAME = 'users';
 
     public function __construct() {
         loadModel('User');
         $this->conn = getConn();
     }
 
+    public function getAllUsers() {
+        $query = "SELECT * FROM `".self::TABLE_NAME."`";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        $users = [];
+        while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $user = new User($row['username'], $row['password'], $row['role'], $row['employeeId']);
+            $users[] = $user;
+        }
+        return $users;
+    }
+
     public function getUserByUsername($username) {
-        $query = "SELECT * FROM `users` WHERE username = :username";
+        $query = "SELECT * FROM `".self::TABLE_NAME."` WHERE username = :username";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':username', $username, PDO::PARAM_STR);
         $stmt->execute();
@@ -21,7 +34,7 @@ class UserService {
     }
 
     public function getUserByEmployeeId($id) {
-        $query = "SELECT * FROM `users` WHERE employeeId = :employeeId";
+        $query = "SELECT * FROM `".self::TABLE_NAME."` WHERE employeeId = :employeeId";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':employeeId', $id, PDO::PARAM_INT);
         $stmt->execute();
@@ -30,5 +43,65 @@ class UserService {
             $user = new User($row['username'], $row['password'], $row['role'], $row['employeeId']);
         }
         return $user;
+    }
+
+    public function validateUser($username, $password) {
+        $user = $this->getUserByUsername($username);
+        if(!$user) {
+            return [
+                'status' => 'err',
+                'message' => 'Tài khoản không tồn tại'
+            ];
+        }
+        if(!password_verify($password, $user->getPassword())) {
+            return [
+                'status' => 'err',
+                'message' => 'Mật khẩu không đúng'
+            ];   
+        }
+
+        $_SESSION['uid'] = $user->getEmployeeId();
+        $_SESSION['role'] = $user->getRole();
+        return [
+            'status' => 'success',
+            'metadata' => [
+                'uid' => $user->getEmployeeId(),
+                'role' => $user->getRole()
+            ],
+        ];
+    }
+
+    public function register(array $data_employee, $username, $password) {
+        try {
+            $this->conn->beginTransaction();
+    
+            $employeeQuery = "INSERT INTO employees (fullName, address, email, phone, position, avatar, departmentId) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            $employeeStmt = $this->conn->prepare($employeeQuery);
+            $employeeStmt->execute($data_employee);
+    
+            $employeeId = $this->conn->lastInsertId();
+            $role = 'regular';
+    
+            $userQuery = "INSERT INTO `".self::TABLE_NAME."` (username, password, role, employeeId)
+                          VALUES (?, ?, ?, ?)";
+            $userStmt = $this->conn->prepare($userQuery);
+            $userStmt->execute([$username, password_hash($password, PASSWORD_DEFAULT), $role, $employeeId]);
+            $this->conn->commit();
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }    
+
+    public function updateUser($username, $password) {
+        $query = "UPDATE `".self::TABLE_NAME."` SET password = :password WHERE username = :username";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':password', password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
+        $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+        try {
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 }
