@@ -15,10 +15,7 @@ if (count($currentPageItems) == 0) {
 <div class="container mt-5">
     <h1 class="text-center mb-2">Người dùng</h1>
     <div class="d-flex justify-content-between my-3">
-        <a href="<?= DOMAIN . '?controller=employee&action=create' ?>" class="btn btn-success">
-            Thêm mới <i class="fas fa-plus"></i>
-        </a>
-        <form action="#" method="post" class="d-flex">
+        <form action="#" method="post" class="d-flex ms-auto">
             <label class="me-2">
                 <input type="text" class="form-control" name="keyword" placeholder="Search">
             </label>

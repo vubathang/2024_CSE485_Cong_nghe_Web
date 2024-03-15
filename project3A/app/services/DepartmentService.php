@@ -85,25 +85,24 @@ class DepartmentService
         return $stmt->execute();
     }
 
-    public function searchDepartments($keyword)
-    {
-        $query = "SELECT d1.*, d2.departmentName AS parentDepartmentName
-                FROM departments d1 LEFT JOIN departments d2 ON d1.parentDepartmentId = d2.departmentId
-                WHERE d1.departmentName LIKE :keyword OR d1.address LIKE :keyword OR d1.email LIKE :keyword OR d1.phone LIKE :keyword OR d2.departmentName LIKE :keyword";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindValue(':keyword', '%' . $keyword . '%', PDO::PARAM_STR);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_CLASS, 'Department');
-    }
+//    public function searchDepartments($keyword)
+//    {
+//        $query = "SELECT d1.*, d2.departmentName AS parentDepartmentName
+//                FROM departments d1 LEFT JOIN departments d2 ON d1.parentDepartmentId = d2.departmentId
+//                WHERE d1.departmentName LIKE :keyword OR d1.address LIKE :keyword OR d1.email LIKE :keyword OR d1.phone LIKE :keyword OR d2.departmentName LIKE :keyword";
+//        $stmt = $this->conn->prepare($query);
+//        $stmt->bindValue(':keyword', '%' . $keyword . '%', PDO::PARAM_STR);
+//        $stmt->execute();
+//        return $stmt->fetchAll(PDO::FETCH_CLASS, 'Department');
+//    }
 
     public function search($value, $col) {
-        $query = "SELECT d1.*, d2.departmentName AS parentDepartmentName FROM departments d1 LEFT JOIN departments d2 ON d1.parentDepartmentId = d2.departmentId WHERE d1.".$col." LIKE ?";
+        $query = "SELECT * FROM departments WHERE ".$col." LIKE ?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute(["%".$value."%"]);
         $departments = [];
-        $stmt->execute();
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $department = new Department($row['departmentId'], $row['departmentName'], $row['address'], $row['email'], $row['phone'], $row['parentDepartmentId'], $row['parentDepartmentName']);
+            $department = new Department($row['departmentId'], $row['departmentName'], $row['address'], $row['email'], $row['phone'], $row['parentDepartmentId']);
             $departments[] = $department;
         }
         return $departments;

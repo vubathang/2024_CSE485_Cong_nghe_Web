@@ -80,7 +80,6 @@ class AuthController {
                     $password
                 );
                 if($result) {
-                    echo "H";
                     echo 'Location : '.DOMAIN;
                     header('Location: '.DOMAIN);
                 }
