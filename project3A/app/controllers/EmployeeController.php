@@ -45,14 +45,15 @@ class EmployeeController
                 $email = $_POST['email'];
                 $phone = $_POST['phone'];
                 $position = $_POST['position'];
-                // $avatar = $_POST['avatar'];
+                $avatar = '/assets/images/default.png';
                 $departmentId = $_POST['departmentId'];
-                if ($this->employeeService->createEmployee($fullName, $address, $email, $phone, $position, 'avatar.jpg', $departmentId)) {
-                    header('Location: ' . DOMAIN . '?controller=employee&action=index');
-                } else {
-                    header('Location: ' . DOMAIN . '?controller=employee&action=create?error=Failed to create employee');
-                }
-                exit;
+                    // add employee then add user
+                $data_employee = [$fullName, $address, $email, $phone, $position, $avatar, $departmentId];
+                $result = $this->userService->register(
+                    $data_employee
+                );
+
+                header('Location: ' . DOMAIN . '?controller=employee&action=index');
             }
         }
         displayView('employee/create',

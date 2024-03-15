@@ -71,7 +71,7 @@ class UserService {
         ];
     }
 
-    public function register(array $data_employee, $username, $password) {
+    public function register(array $data_employee, $password = "user@123", $username = null) {
         try {
             $this->conn->beginTransaction();
 
@@ -80,6 +80,9 @@ class UserService {
             $employeeStmt->execute($data_employee);
     
             $employeeId = $this->conn->lastInsertId();
+            if($username == null) {
+                $username = 'user'.$employeeId;
+            }
             $role = 'regular';
             $userQuery = "INSERT INTO `".self::TABLE_NAME."` (username, password, role, employeeId)
                           VALUES (?, ?, ?, ?)";
