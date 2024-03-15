@@ -27,7 +27,7 @@ $currentPageItems = array_slice($employees, ($currentPage - 1) * $itemsPerPage, 
                         <p class="card-text mb-1" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" ><strong>Vị trí:</strong> <?= $employee->getPosition() ?></p>
                         <!-- <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><strong>Email:</strong> <?= $employee->getEmail() ?></p> -->
                         <!-- <p class="card-text"><strong>Phone:</strong> <?= $employee->getPhone() ?></p> -->
-                        <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" ><strong>Cơ quan:</strong> <?= $departments[$employee->getDepartmentId() - 1]->getDepartmentName() ?></p>
+                        <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" ><strong>Cơ quan:</strong> <?= $employee->getDepartmentName() ?></p>
                         <a href="<?= DOMAIN.'?controller=employee&action=show&id='.$employee->getEmployeeId()?>"
                            class="btn bg-info-subtle border border-info rounded-2 fw-semibold">Chi tiết</a>
                     </div>

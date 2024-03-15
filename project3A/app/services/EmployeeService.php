@@ -90,12 +90,16 @@ class EmployeeService
     }
 
     public function search($value, $col) {
-        $query = "SELECT * FROM employees WHERE ".$col." LIKE ?";
+        // $query = "SELECT * FROM employees WHERE ".$col." LIKE ?";
+        $query = "SELECT e.*, d.departmentName
+                FROM employees e
+                LEFT JOIN departments d ON e.departmentId = d.departmentId
+                WHERE e.".$col." LIKE ?";
         $stmt = $this->conn->prepare($query);
         $stmt->execute(["%".$value."%"]);
         $employees = [];
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $employee = new Employee($row['employeeId'], $row['fullName'], $row['address'], $row['email'], $row['phone'], $row['position'], $row['avatar'], $row['departmentId']);
+            $employee = new Employee($row['employeeId'], $row['fullName'], $row['address'], $row['email'], $row['phone'], $row['position'], $row['avatar'], $row['departmentId'], $row['departmentName']);
             $employees[] = $employee;
         }
         return $employees;

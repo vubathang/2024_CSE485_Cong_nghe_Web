@@ -9,9 +9,9 @@ class Employee {
   private $position;
   private $avatar;
   private $departmentId;
-//  private $departmentName;
+ private $departmentName;
 
-    public function __construct($employeeId, $fullName, $address, $email, $phone, $position, $avatar, $departmentId) {
+    public function __construct($employeeId, $fullName, $address, $email, $phone, $position, $avatar, $departmentId, $departmentName) {
         $this->employeeId = $employeeId;
         $this->fullName = $fullName;
         $this->address = $address;
@@ -20,7 +20,7 @@ class Employee {
         $this->position = $position;
         $this->avatar = $avatar;
         $this->departmentId = $departmentId;
-//        $this->departmentName = $departmentName;
+       $this->departmentName = $departmentName;
     }
 
     public function getEmployeeId() {
@@ -68,5 +68,10 @@ class Employee {
     public function getDepartmentId() {
         return $this->departmentId;
     }
-
+    public function setDepartmentName($departmentName) {
+        $this->departmentName = $departmentName;
+    }
+    public function getDepartmentName() {
+        return $this->departmentName;
+    }
 }

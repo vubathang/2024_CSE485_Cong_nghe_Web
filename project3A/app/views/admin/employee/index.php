@@ -45,7 +45,7 @@ $indexEmployee = ($currentPage - 1) * $itemsPerPage;
                     <td><?= $employee->getPhone() ?></td>
                     <td><?= $employee->getPosition() ?></td>
                     <!-- <td><?= $employee->getAvatar() ?></td> -->
-                    <td><?=$departments[$employee->getDepartmentId() - 1]->getDepartmentName();?></td>
+                    <td><?=$employee->getDepartmentName()?></td>
                     <td class="d-flex justify-content-evenly">
                         <a href="<?= DOMAIN . '?controller=employee&action=show&id=' . $employee->getEmployeeId() ?>"
                            class="btn btn-outline-primary">
