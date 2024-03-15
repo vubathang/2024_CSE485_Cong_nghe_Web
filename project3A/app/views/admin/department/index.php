@@ -13,7 +13,7 @@
         <a href="<?= DOMAIN . '?controller=department&action=create' ?>" class="btn btn-success">
             Thêm mới <i class="fas fa-plus"></i>
         </a>
-        <form action="<?= DOMAIN . '?controller=department&action=search' ?>" method="post" class="d-flex">
+        <form action="#" method="post" class="d-flex">
             <label class="me-2">
                 <input type="text" class="form-control" name="keyword" placeholder="Khoa công nghệ thông tin">
             </label>

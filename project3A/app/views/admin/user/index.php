@@ -65,11 +65,11 @@ if (count($currentPageItems) == 0) {
                            class="btn btn-outline-warning">
                             <i class="fas fa-pen-to-square"></i>
                         </a>
-                        <a data-bs-toggle="modal" data-bs-target="#save-info-department"
+                        <a data-bs-toggle="modal" data-bs-target="#delete-user<?php echo $user->getUsername()?>"
                            class="btn btn-outline-danger">
                             <i class="fas fa-trash"></i>
                         </a>
-                        <div class="modal fade" id="save-info-department" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="delete-user<?php echo $user->getUsername()?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">

@@ -55,11 +55,11 @@ $indexEmployee = ($currentPage - 1) * $itemsPerPage;
                            class="btn btn-outline-warning">
                             <i class="fas fa-pen-to-square"></i>
                         </a>
-                        <a data-bs-toggle="modal" data-bs-target="#save-info-department"
+                        <a data-bs-toggle="modal" data-bs-target="#delete-employee<?php echo $employee->getEmployeeId()?>"
                            class="btn btn-outline-danger">
                             <i class="fas fa-trash"></i>
                         </a>
-                        <div class="modal fade" id="save-info-department" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="delete-employee<?php echo $employee->getEmployeeId()?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
