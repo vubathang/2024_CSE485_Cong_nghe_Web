@@ -76,8 +76,8 @@ class AuthController {
                 $data_employee = [$fullName, $address, $email, $phone, $position, $avatar, $departmentId];
                 $result = $this->userService->register(
                     $data_employee, 
-                    $username,
-                    $password
+                    $password,
+                    $username
                 );
                 if($result) {
                     echo 'Location : '.DOMAIN;
