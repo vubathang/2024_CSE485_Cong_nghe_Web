@@ -9,6 +9,11 @@
 <?php displayView('components/header');?>
 <div class="container mt-5">
     <h1 class="text-center mb-2">Đơn vị</h1>
+    <?php if (isset($_GET['error'])): ?>
+        <div class="alert alert-danger" role="alert">
+            <?= "Không thể xóa phòng ban này vì còn nhân viên thuộc phòng ban" ?>
+        </div>
+    <?php endif; ?>
     <div class="d-flex justify-content-between my-3">
         <a href="<?= DOMAIN . '?controller=department&action=create' ?>" class="btn btn-success">
             Thêm mới <i class="fas fa-plus"></i>
@@ -51,11 +56,11 @@
                            class="btn btn-outline-warning">
                             <i class="fas fa-pen-to-square"></i>
                         </a>
-                        <a data-bs-toggle="modal" data-bs-target="#save-info-department"
+                        <a data-bs-toggle="modal" data-bs-target="#delete-department-<?= $department->getDepartmentId() ?>"
                            class="btn btn-outline-danger">
                             <i class="fas fa-trash"></i>
                         </a>
-                        <div class="modal fade" id="save-info-department" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="delete-department-<?= $department->getDepartmentId() ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                 <div class="modal-header">

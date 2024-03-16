@@ -75,18 +75,16 @@ class DepartmentController
 
     public function delete()
     {
-        if (isset($_GET['id'])) {
-            if ($this->departmentService->deleteDepartment($_GET['id'])) {
-                header('Location: ' . DOMAIN . '?controller=department&action=index');
-            } else {
-                header('Location: ' . DOMAIN . '?controller=department&action=index?error=Failed to delete department');
-            }
+        if ($this->departmentService->deleteDepartment($_GET['id'])) {
+            header('Location: ' . DOMAIN . '?controller=department&action=index');
+        } else {
+            header('Location: ' . DOMAIN . '?controller=department&action=index&error=Failed to delete department');
         }
     }
 
     public function search($keyword, $colName)
     {
-        $deparments = $this->departmentService->search($keyword, $colName);
-        displayView('department/index', ['departments' => $deparments]);
+        $departments = $this->departmentService->search($keyword, $colName);
+        displayView('department/index', ['departments' => $departments]);
     }
 }
