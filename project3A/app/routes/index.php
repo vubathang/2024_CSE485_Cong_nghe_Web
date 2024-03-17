@@ -7,6 +7,7 @@
         $controllerName = 'auth';
     }
 
+    $_SESSION['current_page'] = $controllerName;
     $controllerName .= 'Controller';
 
     $path = ROOT_PATH.CONTROLLER_FOLDER_NAME.$controllerName.'.php';

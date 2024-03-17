@@ -14,13 +14,18 @@ $currentPageItems = array_slice($employees, ($currentPage - 1) * $itemsPerPage, 
                 <div class="col-lg-3 col-md-4 col-sm-6 col-12 my-3">
                     <div class="card rounded-3 shadow p-3">
                         <?php
-                            $avatar = $employee->getAvatar();
-                            if (!file_exists($avatar)) {
-                                $avatar = './assets/images/default.png';
+                            if (file_exists(ROOT_PATH.'/public/assets/uploads/avatar-'.$employee->getEmployeeId().'.jpg')) {
+                                $avatar = './assets/uploads/avatar-'.$employee->getEmployeeId().'.jpg';
+                            } 
+                            else if(file_exists(ROOT_PATH.'/public/assets/uploads/avatar-'.$employee->getEmployeeId().'.png')) {
+                                $avatar = './assets/uploads/avatar-'.$employee->getEmployeeId().'.png';
+                            }                        
+                            else {
+                                $avatar = './assets/uploads/default.png';
                             }
                         ?> 
                         <div class="d-flex align-items-center">
-                            <img src="<?= $avatar ?>" class="me-3" style="height: 32px; width: 32px;" alt="<?= $employee->getFullName() ?>">
+                            <img src="<?= $avatar ?>" class="me-3" style="height: 32px; width: 32px; border-radius: 50%" alt="<?= $employee->getFullName() ?>">
                             <h5 class="" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" ><?= $employee->getFullName()?></h5>
                         </div>
                         <!-- <p class="card-text"><strong>Name:</strong> <?= $employee->getFullName() ?></p> -->

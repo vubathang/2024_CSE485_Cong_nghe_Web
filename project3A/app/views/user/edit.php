@@ -1,6 +1,6 @@
 <?php displayView('components/header') ?>;
 <div class="d-flex justify-content-center">
-    <form class="row container" action="#" method="post">
+    <form class="row container" action="#" method="post" enctype="multipart/form-data">
         <h4 class="col-12 p-3">Thông tin cá nhân</h4>
         <div class="mb-3 col-6">
             <label for="username" class="form-label">Tên đăng nhập</label>
@@ -38,13 +38,8 @@
             <label for="position" class="form-label">Chức vụ</label>
             <input type="text" class="form-control" name="position" id="position" value="<?=$employee->getPosition()?>">
         </div>
-        <!-- <div class="mb-3 col-6">
-            <label for="departmentId" class="form-label">Phòng ban</label>
-            <input type="text" class="form-control" name="departmentId" id="departmentId" value="<?=$employee->getDepartmentId()?>">
-        </div> -->
         <div class="mb-3 col-6">
             <label for="departmentId" class="form-label">Phòng ban</label>
-            <!-- <input type="text" class="form-control" placeholder="Cơ quan"> -->
             <select class="form-select" name="departmentId"  aria-label="Default select example">
                 <?php foreach($deparments as $dc): ?>
                     <?php if($employee->getDepartmentId() == $dc->getDepartmentId()):?>
@@ -54,6 +49,12 @@
                     <?php endif;?>
                 <?php endforeach ?>
             </select>
+        </div>
+        <div class="col-12 mb-5">
+            <label for="avatar" class="form-label">Ảnh đại diện</label>
+            <div class="input-group">
+                <input type="file" class="form-control" id="avatar" name="avatar">
+            </div>
         </div>
         <div class="col-12 mb-3">
             <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#save-info-user">Lưu</button>

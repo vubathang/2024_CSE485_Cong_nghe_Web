@@ -26,7 +26,7 @@ class UserController {
             $users = $this->userService->getAllUsers();
             displayView('user/index', [
                 'user' => $user,
-                'users' => $users
+                'users' => $users,
             ]);
         }
     }
@@ -47,6 +47,7 @@ class UserController {
                     $resUser = $this->userService->updateUserPw($_POST['username'], $_POST['newPassword']);
                 }
             }
+            $this->userService->saveAvatar($_FILES['avatar'], $id);
             $resEmployee = $this->employeeService->updateEmployee($_POST['employeeId'], $_POST['fullName'], $_POST['address'], $_POST['email'], $_POST['phone'], $_POST['position'], 'avatar.jpg',$_POST['departmentId']);
             if($resUser && $resEmployee) header('Location: '.DOMAIN.'?controller=user&action=edit');
             else $error = 'Thay đổi thất bại';

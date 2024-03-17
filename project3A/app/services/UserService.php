@@ -141,4 +141,34 @@ class UserService {
         $stmt->bindParam(':employeeId', $employeeId, PDO::PARAM_STR);
         return $stmt->execute();
     }
+
+    public function saveAvatar($file, $id) {
+        $allowedExtensions = ['jpg', 'jpeg', 'png'];
+        $maxSize = 1048576; // 1MB
+        $targetDir = ROOT_PATH."/public/assets/uploads/";
+        if (!empty($file['tmp_name'])) {
+            $existingFiles = glob($targetDir . 'avatar-' . $id . '.*');
+            foreach ($existingFiles as $existingFile) { // Đổi tên biến $file thành $existingFile
+                unlink($existingFile);
+            }
+    
+            $fileInfo = pathinfo($file['name']);
+            if (!in_array($fileInfo['extension'], $allowedExtensions)) {
+                echo "Sai định dạng";
+                die();
+            } else if ($file['size'] > $maxSize) {
+                echo 'File quá lớn';
+                die();
+            } else {
+                $fileName = 'avatar-'. $id . "." . $fileInfo['extension'];
+                $targetFile = $targetDir . $fileName;
+                if (move_uploaded_file($file['tmp_name'], $targetFile))
+                {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+    }    
 }

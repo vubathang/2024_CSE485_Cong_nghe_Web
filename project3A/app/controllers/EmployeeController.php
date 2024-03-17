@@ -45,7 +45,7 @@ class EmployeeController
                 $email = $_POST['email'];
                 $phone = $_POST['phone'];
                 $position = $_POST['position'];
-                $avatar = '/assets/images/default.png';
+                $avatar = '/assets/uploads/default.png';
                 $departmentId = $_POST['departmentId'];
                     // add employee then add user
                 $data_employee = [$fullName, $address, $email, $phone, $position, $avatar, $departmentId];
@@ -74,7 +74,7 @@ class EmployeeController
                 $position = $_POST['position'];
                 $avatar = $_POST['avatar'];
                 $departmentId = $_POST['departmentId'];
-                if ($this->employeeService->updateEmployee($employeeId, $fullName, $address, $email, $phone, $position, 'avatar.jpg', $departmentId)) {
+                if ($this->employeeService->updateEmployee($employeeId, $fullName, $address, $email, $phone, $position, '/assets/uploads/default.png', $departmentId)) {
                     header('Location: ' . DOMAIN . '?controller=employee&action=index');
                 } else {
                     header('Location: ' . DOMAIN . '?controller=employee&action=edit&id=' . $_GET['id'] . '?error=Failed to update employee');

@@ -3,14 +3,19 @@
 <div class="container mt-5" style="width: 500px;">
     <div class="my-5 me-auto row rounded-3 shadow p-3 bg-white">
         <?php
-            $avatar = $employee->getAvatar();
-            if (!file_exists($avatar)) {
-                $avatar = './assets/images/default.png';
+            if (file_exists(ROOT_PATH.'/public/assets/uploads/avatar-'.$employee->getEmployeeId().'.jpg')) {
+                $avatar = './assets/uploads/avatar-'.$employee->getEmployeeId().'.jpg';
+            } 
+            else if(file_exists(ROOT_PATH.'/public/assets/uploads/avatar-'.$employee->getEmployeeId().'.png')) {
+                $avatar = './assets/uploads/avatar-'.$employee->getEmployeeId().'.png';
+            }                        
+            else {
+                $avatar = './assets/uploads/default.png';
             }
         ?>
         <div class="position-relative" style="height: 200px;">
             <img src="./assets/images/banner.jpg" class="w-100 object-fit-cover position-relative" style="height: 150px;">
-            <img src="<?=$avatar?>" alt="<?= $employee->getFullName() ?>" style="width: 100px; height: 100px;" class="round-circle position-absolute bottom-0 start-50 translate-middle-x">
+            <img src="<?=$avatar?>" alt="<?= $employee->getFullName() ?>" style="width: 100px; height: 100px; border-radius: 50%" class="round-circle position-absolute bottom-0 start-50 translate-middle-x">
         </div>
         <h3 class="text-center pt-2"><?= $employee->getFullName() ?></h3>
         <p><strong>Email:</strong> <?= $employee->getEmail() ?></p>
