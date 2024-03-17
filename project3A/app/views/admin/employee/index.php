@@ -20,6 +20,7 @@ $indexEmployee = ($currentPage - 1) * $itemsPerPage;
             <button type="submit" class="btn btn-outline-success">Tìm kiếm</button>
         </form>
     </div>
+
     <div class="table-responsive">
         <table class="table table-hover table-striped table-bordered align-middle">
             <thead>

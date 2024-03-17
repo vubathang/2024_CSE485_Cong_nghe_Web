@@ -1,5 +1,14 @@
 <?php displayView('components/header');?>
 <div class="container mt-5">
+    <?php if (isset($_GET['error'])): ?>
+        <div class="alert alert-danger" role="alert">
+            <?= "Không thể thêm đơn vị" ?>
+        </div>
+    <?php elseif (isset($_GET['success'])): ?>
+        <div class="alert alert-success" role="alert">
+            <?= "Thêm đơn vị thành công" ?>
+        </div>
+    <?php endif; ?>
     <h1 class="my-3">Thêm mới đơn vị</h1>
     <form action="#" method="post" enctype="multipart/form-data" class="me-auto row rounded-3 shadow p-3">
         <div class="mb-3">
@@ -28,6 +37,8 @@
             </select>
         </div>
         <button type="submit" class="btn btn-success">Thêm mới</button>
+
+
         <a href="<?=DOMAIN?>?controller=department&action=index" class="text-end icon-link-hover text-decoration-none text-dark"><i class="fa-solid fa-backward me-2"></i>Trở lại</a>
 
     </form>
