@@ -1,6 +1,16 @@
 <?php displayView('components/header');?>
 
 <div class="container mt-5">
+    <?php if (isset($_GET['error'])): ?>
+
+        <div class="alert alert-danger" role="alert">
+            <?= "Không thể thêm nhân viên" ?>
+        </div>
+    <?php elseif (isset($_GET['success'])): ?>
+        <div class="alert alert-success" role="alert">
+            <?= "Thêm nhân viên thành công" ?>
+        </div>
+    <?php endif; ?>
     <h1 class="my-3">Thêm nhân viên</h1>
     <form action="#" method="post" class="me-auto row rounded-3 shadow p-3">
         <div class="mb-3">

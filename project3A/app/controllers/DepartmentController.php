@@ -38,16 +38,20 @@ class DepartmentController
                 $email = $_POST['email'];
                 $phone = $_POST['phone'];
                 $parentDepartmentId = $_POST['parentDepartment'] !== '' ? $_POST['parentDepartment'] : NULL;
-                if ($this->departmentService->createDepartment($departmentName, $address, $email, $phone, $parentDepartmentId)) {
-                    header('Location: ' . DOMAIN . '?controller=department&action=index');
+                $result = $this->departmentService->createDepartment($departmentName, $address, $email, $phone, $parentDepartmentId);
+
+                if ($result) {
+                    header('Location: ' . DOMAIN . '?controller=department&action=create&success=Department created successfully');
+                    exit;
                 } else {
-                    header('Location: ' . DOMAIN . '?controller=department&action=create?error=Failed to create department');
+                    header('Location: ' . DOMAIN . '?controller=department&action=create&error=Failed to create department');
+                    exit;
                 }
-                exit;
             }
         }
         displayView('department/create', ['departments' => $this->departmentService->getAllDepartments()]);
     }
+
 
     public function edit()
     {
