@@ -14,19 +14,19 @@ class UsersTableSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'username' => 'thangvb',
+            'email' => 'thangvb.dev@gmail.com',
             'password' => '$2y$10$Nncv9fpNdfHsu2ksFAwH6.LauQgJ76NE71iLKL3.vvDLr0RHxEE8S',
             'role' => 'admin',
             'employeeId' => 1
         ]);
         User::create([
-            'username' => 'huyentp',
+            'email' => 'huyentp@gmail.com',
             'password' => '$2y$10$Nncv9fpNdfHsu2ksFAwH6.LauQgJ76NE71iLKL3.vvDLr0RHxEE8S',
             'role' => 'admin',
             'employeeId' => 2
         ]);
         User::create([
-            'username' => 'hoangnd',
+            'email' => 'hoangnd@gmail.com',
             'password' => '$2y$10$Nncv9fpNdfHsu2ksFAwH6.LauQgJ76NE71iLKL3.vvDLr0RHxEE8S',
             'role' => 'admin',
             'employeeId' => 3
