@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
@@ -30,6 +31,7 @@ Route::middleware(['auth', 'user-access:regular'])->group(function () {
     Route::get('profile', [RegularController::class, 'profile'])->name('profile');
     Route::post('profile', [RegularController::class, 'updateProfile'])->name('profile.save');
     Route::resource('departments', DepartmentController::class);
+    Route::resource('employees', EmployeeController::class);
 });
 
     //Admin Routes List
@@ -39,4 +41,5 @@ Route::middleware(['auth', 'user-access:admin'])->prefix('admin')->group(functio
     Route::post('profile', [AdminController::class, 'updateProfile'])->name('admin.profile.save');
     Route::resource('users', UserController::class);
     Route::resource('departments', DepartmentController::class);
+    Route::resource('employees', EmployeeController::class);
 });
