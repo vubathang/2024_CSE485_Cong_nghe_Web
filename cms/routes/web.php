@@ -26,20 +26,22 @@ Route::controller(AuthController::class)->group(function () {
 });
  
 //Normal Users Routes List
-Route::middleware(['auth', 'user-access:regular'])->group(function () {
-    Route::get('home', [HomeController::class, 'index'])->name('home');
-    Route::get('profile', [RegularController::class, 'profile'])->name('profile');
-    Route::post('profile', [RegularController::class, 'updateProfile'])->name('profile.save');
-    Route::resource('departments', DepartmentController::class);
-    Route::resource('employees', EmployeeController::class);
-});
+
 
     //Admin Routes List
 Route::middleware(['auth', 'user-access:admin'])->prefix('admin')->group(function () {
     Route::get('home', [HomeController::class, 'adminHome'])->name('admin/home');
     Route::get('profile', [AdminController::class, 'profile'])->name('admin/profile');
     Route::post('profile', [AdminController::class, 'updateProfile'])->name('admin.profile.save');
-    Route::resource('users', UserController::class);
-    Route::resource('departments', DepartmentController::class);
-    Route::resource('employees', EmployeeController::class);
+    Route::resource('users', UserController::class)->names('admin.users');
+    Route::resource('departments', DepartmentController::class)->names('admin.departments');
+    Route::resource('employees', EmployeeController::class)->names('admin.employees');
+});
+
+Route::middleware(['auth', 'user-access:regular'])->group(function () {
+    Route::get('home', [HomeController::class, 'index'])->name('home');
+    Route::get('profile', [RegularController::class, 'profile'])->name('profile');
+    Route::post('profile', [RegularController::class, 'updateProfile'])->name('profile.save');
+    Route::resource('departments', DepartmentController::class)->names('departments');
+    Route::resource('employees', EmployeeController::class)->names('employees');
 });

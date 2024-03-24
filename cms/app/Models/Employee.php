@@ -14,6 +14,9 @@ class Employee extends Model
         return $this->belongsTo(Department::class, 'departmentId', 'departmentId');
     }
 
-
+    public function user() {
+        return $this->hasOne(User::class, 'employeeId', 'employeeId');
+    }
+    protected $primaryKey = 'employeeId';
     protected $fillable = ['fullName', 'address', 'phone', 'position', 'avatar', 'departmentId'];
 }

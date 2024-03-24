@@ -3,6 +3,5 @@
 
 @section('main')
 
-ADMIN HOME
-
+<h1>HOME OF ADMIN</h1>
 @endsection

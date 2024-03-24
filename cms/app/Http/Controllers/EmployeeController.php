@@ -18,9 +18,11 @@ class EmployeeController extends Controller
         if ($search) {
             $query->where('fullName', 'like', "%$search%")
                 ->orWhere('address', 'like', "%$search%")
-                ->orWhere('email', 'like', "%$search%")
                 ->orWhere('phone', 'like', "%$search%")
                 ->orWhere('position', 'like', "%$search%")
+                ->orWhereHas('user', function ($query) use ($search) {
+                    $query->where('email', 'like', "%$search%");
+                })
                 ->orWhereHas('department', function ($query) use ($search) {
                     $query->where('departmentName', 'like', "%$search%");
                 });
@@ -29,10 +31,13 @@ class EmployeeController extends Controller
         }
 
         $employees = $query->paginate(5);
-//        return view('admin.employees.index', compact('employees'));
-
+        
         //regular
-        return view('employees.index', compact('employees'));
+        if(auth()->user()->role == 'admin') {
+            return view('admin.employees.index', compact('employees'));
+        } else {
+            return view('employees.index', compact('employees'));
+        }
     }
 
     /**
@@ -68,7 +73,11 @@ class EmployeeController extends Controller
     public function show(string $id)
     {
         $employee = Employee::find($id);
-        return view('admin.employees.show', compact('employee'));
+        if(auth()->user()->role == 'admin') {
+            return view('admin.employees.show', compact('employee'));
+        } else {
+            return view('employees.show', compact('employee'));
+        }
     }
 
     /**

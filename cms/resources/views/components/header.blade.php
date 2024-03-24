@@ -8,8 +8,8 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item"><a  class="nav-link fw-bold" href="{{ route('home') }}">Trang chủ</a></li>
-            <li class="nav-item"><a class="nav-link fw-bold" href="">Phòng ban</a></li>
-            <li class="nav-item"><a class="nav-link fw-bold" href="">Nhân viên</a></li>
+            <li class="nav-item"><a class="nav-link fw-bold" href="{{ route('departments.index') }}">Phòng ban</a></li>
+            <li class="nav-item"><a class="nav-link fw-bold" href="{{ route('employees.index') }}">Nhân viên</a></li>
         </ul>
         <div class="d-flex">
             {{-- <form class="d-flex" action="#" method="post">

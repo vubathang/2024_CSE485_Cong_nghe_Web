@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('title', 'Quản lý người dùng');
+@section('title', 'Quản lý người dùng')
 
 @section('main')
 <div class="container">
@@ -15,8 +15,8 @@
             {{ session('error') }}
         </div>
     @endif
-    <div class="d-flex justify-content-between my-3">
-        <form action="{{ route('users.index') }}" method="get">
+    <div class="d-flex  justify-content-end">
+        <form action="{{ route('admin.users.index') }}" method="get">
             <div class="input-group">
                 <input type="text" class="form-control" name="search" placeholder="Tìm kiếm...">
                 <button class="btn btn-info" type="submit"><i class="fas fa-search"></i></button>
@@ -40,9 +40,9 @@
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->role === 'admin' ? "Quản trị viên" : "Người dùng thường" }}</td>
                     <td class="d-flex justify-content-evenly">
-                        <a href="{{ route('users.show', $user->id) }}"
+                        <a href="{{ route('admin.users.show', $user->id) }}"
                            class="btn btn-primary"><i class="fas fa-circle-info"></i></a>
-                        <a href="{{ route('users.edit', $user->id) }}"
+                        <a href="{{ route('admin.users.edit', $user->id) }}"
                            class="btn btn-warning"><i class="fas fa-pen-to-square"></i></a>
                         <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                 data-bs-target="#{{ $user->id }}">
@@ -67,7 +67,7 @@
                                             Hủy
                                         </button>
                                         <form
-                                            action="{{ route('users.destroy', $user->id) }}"
+                                            action="{{ route('admin.users.destroy', $user->id) }}"
                                             method="post">
                                             @csrf
                                             @method('DELETE')

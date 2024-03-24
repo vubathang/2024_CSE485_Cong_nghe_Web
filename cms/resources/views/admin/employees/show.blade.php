@@ -1,5 +1,5 @@
 <!-- When there is no desire, all things are at peace. - Laozi -->
-@extends('layout.app')
+@extends('admin.layout.app')
 @section('title', 'Chi tiết nhân viên')
 @section('main')
     <div class="container">

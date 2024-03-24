@@ -30,10 +30,13 @@ class DepartmentController extends Controller
 
         $departments = $query->paginate(10);
 //        admin
-        return view('admin.departments.index', compact('departments'));
+        if(auth()->user()->role == 'admin') {
+            return view('admin.departments.index', compact('departments'));
+        } else {
+            return view('departments.index', compact('departments'));
+        }
 
 //        regular
-//        return view('departments.index', compact('departments'));
     }
 
     /**
@@ -70,9 +73,11 @@ class DepartmentController extends Controller
     {
         $department = Department::find($id);
 //        admin
-        return view('admin.departments.show', compact('department'));
-//        regular
-//        return view('departments.show', compact('department'));
+        if(auth()->user()->role == 'admin') {    
+            return view('admin.departments.show', compact('department'));
+        } else {
+            return view('departments.show', compact('department'));
+        }
     }
 
     /**

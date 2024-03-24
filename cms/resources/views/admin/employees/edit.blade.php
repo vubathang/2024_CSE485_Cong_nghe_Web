@@ -1,5 +1,5 @@
 <!-- Walk as if you are kissing the Earth with your feet. - Thich Nhat Hanh -->
-@extends('layout.app')
+@extends('admin.layout.app')
 @section('title', 'Chỉnh sửa thông tin nhân viên')
 @section('main')
     <div class="container">
@@ -29,7 +29,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" value="{{$employee->email}}">
+                            <input type="email" class="form-control" id="email" name="email" value="{{$employee->user->email}}">
                         </div>
                         <div class="mb-3">
                             <label for="phone" class="form-label">Số điện thoại</label>

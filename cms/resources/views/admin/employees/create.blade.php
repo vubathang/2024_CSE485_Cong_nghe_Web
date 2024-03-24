@@ -1,5 +1,5 @@
 <!-- Walk as if you are kissing the Earth with your feet. - Thich Nhat Hanh -->
-@extends('layout.app')
+@extends('admin.layout.app')
 @section('title', 'Thêm mới nhân viên')
 @section('main')
     <div class="container">

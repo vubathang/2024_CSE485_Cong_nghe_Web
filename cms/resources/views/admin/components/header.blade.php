@@ -8,9 +8,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <!-- <li class="nav-item"><a class="nav-link active fw-bold" aria-current="page" href="#">Trang chủ</a></li> -->
-            <li class="nav-item"><a class="nav-link fw-bold" href="">Quản lý phòng ban</a></li>
-            <li class="nav-item"><a class="nav-link fw-bold" href="">Quản lý nhân viên</a></li>
-            <li class="nav-item"><a class="nav-link fw-bold" href="{{ route('users.index') }}">Quản lý tài khoản</a></li>
+            <li class="nav-item"><a class="nav-link fw-bold" href="{{ route('admin.departments.index') }}">Quản lý phòng ban</a></li>
+            <li class="nav-item"><a class="nav-link fw-bold" href="{{ route('admin.employees.index') }}">Quản lý nhân viên</a></li>
+            <li class="nav-item"><a class="nav-link fw-bold" href="{{ route('admin.users.index') }}">Quản lý tài khoản</a></li>
             
         </ul>
         <div class="dropdown">

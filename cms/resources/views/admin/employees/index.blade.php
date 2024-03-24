@@ -1,5 +1,5 @@
 <!-- I have not failed. I've just found 10,000 ways that won't work. - Thomas Edison -->
-@extends('layout.app')
+@extends('admin.layout.app')
 
 @section('title', 'Quản lý nhân viên')
 
@@ -48,7 +48,7 @@
                                 <th scope="row" class="text-center">{{ $loop->iteration }}</th>
                                 <td>{{ $employee->fullName }}</td>
                                 <td>{{ $employee->address }}</td>
-                                <td>{{ $employee->email }}</td>
+                                <td>{{ $employee->user->email }}</td>
                                 <td>{{ $employee->phone }}</td>
                                 <td>{{ $employee->position }}</td>
                                 <td>{{ $employee->avatar }}</td>
