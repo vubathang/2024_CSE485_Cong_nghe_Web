@@ -1,6 +1,11 @@
 @extends('layout.app')
-@section('title', 'Đại Học Thủy Lợi')
+@section('title', 'Trang chủ')
 
 @section('main')
-<h1 class="fw-bold">This is welcome regular page</h1>
+
+<div class="container">
+    @include('introduce')
+</div>
+
+
 @endsection
