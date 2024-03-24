@@ -16,7 +16,6 @@ class EmployeesTableSeeder extends Seeder
         Employee::create([
             'fullName' => 'Vũ Bá Thắng',
             'address' => 'Thường Tín - Hà Nội',
-            'email' => 'thangvb.dev@gmail.com',
             'phone' => '0378481575',
             'position' => 'Sinh viên',
             'avatar' => null,
@@ -25,7 +24,6 @@ class EmployeesTableSeeder extends Seeder
         Employee::create([
             'fullName' => 'Trịnh Phương Huyền',
             'address' => 'Cầu Giấy - Hà Nội',
-            'email' => 'huyentp@gmail.com',
             'phone' => '0345678911',
             'position' => 'Sinh viên',
             'avatar' => null,
@@ -34,7 +32,6 @@ class EmployeesTableSeeder extends Seeder
         Employee::create([
             'fullName' => 'Nguyễn Duy Hoàng',
             'address' => 'Đông Anh - Hà Nội',
-            'email' => 'hoangnd@gmail.com',
             'phone' => '0123456789',
             'position' => 'Sinh viên',
             'avatar' => null,
