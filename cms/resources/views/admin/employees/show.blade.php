@@ -17,7 +17,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label"><strong>Email</strong></label>
-                        <input type="email" class="form-control" id="email" name="email" value="{{ $employee->email }}" disabled>
+                        <input type="email" class="form-control" id="email" name="email" value="{{ $employee->user->email }}" disabled>
                     </div>
                     <div class="mb-3">
                         <label for="phone" class="form-label"><strong>Số điện thoại</strong></label>

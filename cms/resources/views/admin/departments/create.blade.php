@@ -16,7 +16,7 @@
                         </ul>
                     </div>
                 @endif
-                <form action="{{ route('departments.store') }}" method="post">
+                <form action="{{ route('admin.departments.store') }}" method="post">
                     @csrf
                     <div class="mb-3">
                         <label for="departmentName" class="form-label">Tên đơn vị</label>

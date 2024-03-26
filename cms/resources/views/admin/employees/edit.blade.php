@@ -29,7 +29,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" value="{{$employee->user->email}}">
+                            <input type="email" class="form-control" id="email" name="email" value="{{$employee->user->email}}" disabled>
                         </div>
                         <div class="mb-3">
                             <label for="phone" class="form-label">Số điện thoại</label>
@@ -57,7 +57,7 @@
                         </div>
 
                         <div class="text-end">
-                            <button type="submit" class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#save-info-employee">Lưu</button>
+                            <button type="button" class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#save-info-employee">Lưu</button>
                             <a href="{{ route('admin.employees.index') }}" class="btn btn-primary"><i class="fa-solid fa-backward me-2"></i>Trở lại</a>
                         </div>
                         <div class="modal fade" id="save-info-employee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

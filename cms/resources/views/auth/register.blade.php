@@ -25,8 +25,8 @@
             @csrf
             <h2 class="text-center fw-bold mb-4">Đăng kí</h2>
             <div class="mb-2 w-100">
-                <input required type="text" name="username" class="form-control" placeholder="Tên đăng nhập">
-                @error('username')
+                <input required type="email" name="email" class="form-control" placeholder="Email">
+                @error('email')
                 <p class="bg-danger text-light mt-2 mb-3 py-1 ps-2 rounded fw-semibold error-field"
                 >{{ $message }}</p>
                 @enderror
@@ -60,13 +60,7 @@
                 >{{ $message }}</p>
                 @enderror
             </div>
-            <div class="mb-2 w-100">
-                <input required type="email" name="email" class="form-control" placeholder="Email">
-                @error('email')
-                <p class="bg-danger text-light mt-2 mb-3 py-1 ps-2 rounded fw-semibold error-field"
-                >{{ $message }}</p>
-                @enderror
-            </div>
+
             <div class="mb-2 w-100">
                 <input required type="text" name="phone" class="form-control" placeholder="Số điện thoại">
                 @error('phone')

@@ -63,7 +63,7 @@ class DepartmentController extends Controller
         ]);
 
         Department::create($validatedData);
-        return redirect()->route('departments.index')->with('success', 'Đơn vị đã được tạo thành công.');
+        return redirect()->route('admin.departments.index')->with('success', 'Đơn vị đã được tạo thành công.');
     }
 
     /**
@@ -106,7 +106,7 @@ class DepartmentController extends Controller
 
         $department = Department::find($id);
         $department->update($validatedData);
-        return redirect()->route('departments.index')->with('success', 'Đơn vị đã được cập nhật thành công.');
+        return redirect()->route('admin.departments.index')->with('success', 'Đơn vị đã được cập nhật thành công.');
     }
 
     /**
@@ -125,6 +125,6 @@ class DepartmentController extends Controller
         }
 
         $department->delete();
-        return redirect()->route('departments.index')->with('success', 'Đơn vị đã được xóa thành công.');
+        return redirect()->route('admin.departments.index')->with('success', 'Đơn vị đã được xóa thành công.');
     }
 }

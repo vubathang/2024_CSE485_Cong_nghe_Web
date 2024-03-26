@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -68,7 +69,7 @@ class UserController extends Controller
 
         $user = User::find($id);
         $user->update($validatedData);
-        return redirect()->route('users.index')->with('success', 'Người dùng đã được cập nhật thành công.');
+        return redirect()->route('admin.users.index')->with('success', 'Người dùng đã được cập nhật thành công.');
     }
 
     /**
@@ -77,8 +78,9 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         $user = User::find($id);
-
+        
         $user->delete();
-        return redirect()->route('users.index')->with('success', 'Người dùng đã được xóa thành công.');
+        Employee::destroy($user->employeeId);
+        return redirect()->route('admin.users.index')->with('success', 'Người dùng đã được xóa thành công.');
     }
 }

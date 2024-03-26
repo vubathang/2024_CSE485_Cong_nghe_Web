@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Department;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -20,17 +21,35 @@ class AuthController extends Controller
     public function registerSave(Request $request)
     {
 
+        $validatedData = $request->validate([
+            'fullName' => 'required|max:50',
+            'address' => 'required|max:100',
+            'phone' => 'required|max:15',
+            'position' => 'required|max:50',
+            'avatar' => 'nullable|max:100',
+            'departmentId' => 'nullable|exists:departments,departmentId'
+        ]);
+        
         Validator::make($request->all(), [
             'email' => 'required|email',
             'password' => 'required|confirmed'
-        ])->validate();
+            ])->validate();
+            
+        $employee = Employee::create($validatedData);
+        $employeeId = $employee->employeeId;
 
-        User::create([
-            'email' => $request->email,
+        $user = [
+            'email' => $request['email'],
             'password' => Hash::make($request->password),
             'role' => 'regular',
-            'employeeId' => 1
-        ]);
+            'employeeId' => $employeeId
+        ];
+
+        User::create(
+            $user
+        );
+
+
 
         return redirect()->route('login');
     }
