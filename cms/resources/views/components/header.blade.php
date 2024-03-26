@@ -14,7 +14,7 @@
         <div class="d-flex">
             {{-- <form class="d-flex" action="#" method="post">
                 <select name="field-search" class="form-select me-3 fw-bold" style="width: 180px;">
-                    
+
                 </select>
                 <input class="form-control me-2" name="search-value" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success me-2" type="submit">Search</button>
@@ -38,9 +38,9 @@
                 </ul>
                 </div>
             @else
-                <a class="btn btn-success" href="{{ route('login') }}">LOGIN</a>
+                <a class="btn btn-success" href="{{ route('login') }}">ĐĂNG NHẬP</a>
                 @if (Route::has('register'))
-                <a class="btn btn-warn"  href="{{ route('register') }}">REGISTER</a>
+                <a class="btn btn-warn"  href="{{ route('register') }}">ĐĂNG KÝ</a>
                 @endif
             @endauth
             @endif

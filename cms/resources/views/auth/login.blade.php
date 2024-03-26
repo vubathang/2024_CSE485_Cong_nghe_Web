@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Đăng kí</title>
+    <title>Đăng nhập</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -33,7 +33,7 @@
                 @csrf
                 @if ($errors->any())
                 <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                    <strong class="font-bold">Error!</strong>
+                    <strong class="font-bold">Lỗi!</strong>
                     <ul>
                         @foreach ($errors->all() as $error)
                         <li><span class="block sm:inline">{{ $error }}</span></li>
@@ -41,7 +41,7 @@
                     </ul>
                     <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
                         <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                            <title>Close</title>
+                            <title>Đóng</title>
                             <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
                         </svg>
                     </span>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="col-12 mb-3">
                     <div class="form-check">
-                        <input class="form-check-input"" type="checkbox" aria-describedby="remember" name="remember" id="remember">
+                        <input class="form-check-input" type="checkbox" aria-describedby="remember" name="remember" id="remember">
                         <label class="form-check-label" for="remember">
                             Nhớ tài khoản
                         </label>
