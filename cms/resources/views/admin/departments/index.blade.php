@@ -4,7 +4,7 @@
 
 @section('main')
     <div class="container">
-        <h1 class="text-center text-uppercase">Đơn vị</h1>
+        <h1 class="text-center text-uppercase mt-3">Quản lý đơn vị</h1>
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
@@ -42,9 +42,9 @@
                         <td>{{ $department->departmentName }}</td>
                         <td>{{ $department->parent ? $department->parent->departmentName : 'N/A' }}</td>
                         <td class="d-flex justify-content-evenly">
-                            <a href="{{ route('departments.show', $department->departmentId) }}"
+                            <a href="{{ route('admin.departments.show', $department->departmentId) }}"
                                class="btn btn-primary"><i class="fas fa-circle-info"></i></a>
-                            <a href="{{ route('departments.edit', $department->departmentId) }}"
+                            <a href="{{ route('admin.departments.edit', $department->departmentId) }}"
                                class="btn btn-warning"><i class="fas fa-pen-to-square"></i></a>
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                     data-bs-target="#{{ $department->departmentId }}">
@@ -69,7 +69,7 @@
                                                 Hủy
                                             </button>
                                             <form
-                                                action="{{ route('departments.destroy', $department->departmentId) }}"
+                                                action="{{ route('admin.departments.destroy', $department->departmentId) }}"
                                                 method="post">
                                                 @csrf
                                                 @method('DELETE')

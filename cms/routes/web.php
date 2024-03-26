@@ -39,7 +39,7 @@ Route::middleware(['auth', 'user-access:admin'])->prefix('admin')->group(functio
 });
 
 Route::middleware(['auth', 'user-access:regular'])->group(function () {
-    Route::get('home', [HomeController::class, 'index'])->name('home');
+    // Route::get('home', [HomeController::class, 'index'])->name('home');
     Route::get('profile', [RegularController::class, 'profile'])->name('profile');
     Route::post('profile', [RegularController::class, 'updateProfile'])->name('profile.save');
     Route::resource('departments', DepartmentController::class)->names('departments');

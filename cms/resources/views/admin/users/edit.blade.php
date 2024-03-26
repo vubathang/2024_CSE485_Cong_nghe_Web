@@ -16,7 +16,7 @@
                         </ul>
                     </div>
                 @endif
-                <form action="{{ route('users.update', $user->id) }}" method="post">
+                <form action="{{ route('admin.users.update', $user->id) }}" method="post">
                     @csrf
                     @method('put')
                     <div class="mb-3">
@@ -39,7 +39,7 @@
                     </div>
                     <div class="text-end">
                         <button type="submit" class="btn btn-success me-2">Cập nhật</button>
-                        <a href="{{ route('users.index') }}" class="btn btn-primary"><i
+                        <a href="{{ route('admin.users.index') }}" class="btn btn-primary"><i
                                 class="fas fa-backward me-2"></i>Trở lại</a>
                     </div>
                 </form>

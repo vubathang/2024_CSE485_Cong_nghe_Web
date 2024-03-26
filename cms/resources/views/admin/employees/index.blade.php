@@ -6,7 +6,7 @@
 @section('main')
     <div class="container">
         <div class="row">
-            <h1 class="text-center text-uppercase">Quản lý nhân viên</h1>
+            <h1 class="text-center text-uppercase mt-3">Quản lý nhân viên</h1>
             @if (session('success'))
                 <div class="alert alert-success">
                     {{ session('success') }}
@@ -37,7 +37,6 @@
                             <th scope="col" class="text-center">Email</th>
                             <th scope="col" class="text-center">Số điện thoại</th>
                             <th scope="col" class="text-center">Chức vụ</th>
-                            <th scope="col" class="text-center">Avatar</th>
                             <th scope="col" class="text-center">Đơn vị</th>
                             <th scope="col" class="text-center">Thao tác</th>
                         </tr>
@@ -51,12 +50,11 @@
                                 <td>{{ $employee->user->email }}</td>
                                 <td>{{ $employee->phone }}</td>
                                 <td>{{ $employee->position }}</td>
-                                <td>{{ $employee->avatar }}</td>
                                 <td>{{ $employee->department ? $employee->department->departmentName : 'N/A' }}</td>
                                 <td class="d-flex justify-content-evenly">
-                                    <a href="{{ route('employees.show', $employee->employeeId) }}"
+                                    <a href="{{ route('admin.employees.show', $employee->employeeId) }}"
                                        class="btn btn-primary"><i class="fas fa-circle-info"></i></a>
-                                    <a href="{{ route('employees.edit', $employee->employeeId) }}"
+                                    <a href="{{ route('admin.employees.edit', $employee->employeeId) }}"
                                        class="btn btn-warning"><i class="fas fa-pen-to-square"></i></a>
                                     <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                             data-bs-target="#{{ $employee->employeeId }}">
@@ -81,7 +79,7 @@
                                                         Hủy
                                                     </button>
                                                     <form
-                                                        action="{{ route('employees.destroy', $employee->employeeId) }}"
+                                                        action="{{ route('admin.employees.destroy', $employee->employeeId) }}"
                                                         method="post">
                                                         @csrf
                                                         @method('DELETE')

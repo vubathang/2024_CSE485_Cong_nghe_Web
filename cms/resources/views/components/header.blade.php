@@ -1,7 +1,7 @@
 <header >
     <nav class="navbar navbar-expand-lg" style="background-color: #f5f5f5;">
     <div class="container-fluid" >
-        <a class="navbar-brand fw-bold text-success fs-4" href="">DiCoSy</a>
+        <a class="navbar-brand fw-bold text-success fs-4" href="{{ route('home') }}">DiCoSy</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -14,7 +14,7 @@
         <div class="d-flex">
             {{-- <form class="d-flex" action="#" method="post">
                 <select name="field-search" class="form-select me-3 fw-bold" style="width: 180px;">
-                    
+
                 </select>
                 <input class="form-control me-2" name="search-value" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success me-2" type="submit">Search</button>
@@ -38,9 +38,9 @@
                 </ul>
                 </div>
             @else
-                <a class="btn btn-success" href="{{ route('login') }}">LOGIN</a>
+                <a class="btn btn-success" href="{{ route('login') }}">ĐĂNG NHẬP</a>
                 @if (Route::has('register'))
-                <a class="btn btn-warn"  href="{{ route('register') }}">REGISTER</a>
+                <a class="btn btn-warn"  href="{{ route('register') }}">ĐĂNG KÝ</a>
                 @endif
             @endauth
             @endif

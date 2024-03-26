@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
- 
+
+use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -12,12 +13,13 @@ use Illuminate\Validation\ValidationException;
 class AuthController extends Controller
 {
     public function register() {
-        return view('auth/register');
+        $departments = Department::all();
+        return view('auth/register', compact('departments'));
     }
 
     public function registerSave(Request $request)
     {
-        
+
         Validator::make($request->all(), [
             'email' => 'required|email',
             'password' => 'required|confirmed'
@@ -31,7 +33,7 @@ class AuthController extends Controller
         ]);
 
         return redirect()->route('login');
-    }  
+    }
 
     public function login() {
         return view('auth.login');
@@ -60,14 +62,14 @@ class AuthController extends Controller
         // return redirect()->route('dashboard');
     }
 
- 
+
     public function logout(Request $request)
     {
         Auth::guard('web')->logout();
- 
+
         $request->session()->forget('role');
         $request->session()->forget('username');
- 
+
         return redirect('/login');
     }
 }
