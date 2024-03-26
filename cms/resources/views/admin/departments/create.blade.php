@@ -46,7 +46,7 @@
                     </div>
                     <div class="text-end">
                         <button type="submit" class="btn btn-success me-2">Xác nhận</button>
-                        <a href="{{ route('departments.index') }}" class="btn btn-primary"><i
+                        <a href="{{ route('admin.departments.index') }}" class="btn btn-primary"><i
                                 class="fa-solid fa-backward me-2"></i>Trở
                             lại</a>
                     </div>

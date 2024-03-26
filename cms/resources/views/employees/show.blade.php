@@ -17,7 +17,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label"><strong>Email</strong></label>
-                        <input type="email" class="form-control" id="email" name="email" value="{{ $employee->email }}" disabled>
+                        <input type="email" class="form-control" id="email" name="email" value="{{ $employee->user->email }}" disabled>
                     </div>
                     <div class="mb-3">
                         <label for="phone" class="form-label"><strong>Số điện thoại</strong></label>
@@ -26,10 +26,6 @@
                     <div class="mb-3">
                         <label for="position" class="form-label"><strong>Chức vụ</strong></label>
                         <input type="text" class="form-control" id="position" name="position" value="{{ $employee->position }}" disabled>
-                    </div>
-                    <div class="mb-3">
-                        <label for="avatar" class="form-label"><strong>Avatar</strong></label>
-                        <input type="text" class="form-control" id="avatar" name="avatar" value="{{ $employee->avatar }}" disabled>
                     </div>
                     <div class="mb-3">
                         <label for="departmentId" class="form-label"><strong>Đơn vị</strong></label>

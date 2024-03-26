@@ -1,10 +1,10 @@
 @extends('admin.layout.app')
 
-@section('title', 'Quản lý người dùng')
+@section('title', 'Quản lý tài khoản')
 
 @section('main')
 <div class="container">
-    <h1 class="text-center text-uppercase">Người dùng</h1>
+    <h1 class="text-center text-uppercase mt-3">Quản lý tài khoản</h1>
     @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
@@ -15,7 +15,7 @@
             {{ session('error') }}
         </div>
     @endif
-    <div class="d-flex  justify-content-end">
+    <div class="d-flex my-3 justify-content-end">
         <form action="{{ route('admin.users.index') }}" method="get">
             <div class="input-group">
                 <input type="text" class="form-control" name="search" placeholder="Tìm kiếm...">

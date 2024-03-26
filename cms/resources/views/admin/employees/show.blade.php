@@ -36,7 +36,7 @@
                         <input type="text" class="form-control" id="departmentId" name="departmentId" value="{{ $employee->department->departmentName }}" disabled>
                     </div>
                     <div class="text-end">
-                        <a href="{{ route('employees.index') }}" class="btn btn-primary"><i class="fa-solid fa-backward me-2"></i>Trở lại</a>
+                        <a href="{{ route('admin.employees.index') }}" class="btn btn-primary"><i class="fa-solid fa-backward me-2"></i>Trở lại</a>
                     </div>
                 </div>
             </div>

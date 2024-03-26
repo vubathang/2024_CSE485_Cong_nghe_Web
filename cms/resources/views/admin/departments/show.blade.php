@@ -34,7 +34,7 @@
                            value="{{ $department->parent ? $department->parent->departmentName : 'N/A' }}" disabled>
                 </div>
                 <div class="mb-3 text-end">
-                    <a href="{{ route('departments.index') }}" class="btn btn-primary"><i
+                    <a href="{{ route('admin.departments.index') }}" class="btn btn-primary"><i
                             class="fas fa-backward me-2"></i>Trở lại</a>
                 </div>
             </div>

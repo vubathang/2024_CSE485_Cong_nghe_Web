@@ -16,7 +16,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form action="{{ route('employees.update', $employee->employeeId) }}" method="post" >
+                    <form action="{{ route('admin.employees.update', $employee->employeeId) }}" method="post" >
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
@@ -58,7 +58,7 @@
 
                         <div class="text-end">
                             <button type="submit" class="btn btn-success me-2" data-bs-toggle="modal" data-bs-target="#save-info-employee">Lưu</button>
-                            <a href="{{ route('employees.index') }}" class="btn btn-primary"><i class="fa-solid fa-backward me-2"></i>Trở lại</a>
+                            <a href="{{ route('admin.employees.index') }}" class="btn btn-primary"><i class="fa-solid fa-backward me-2"></i>Trở lại</a>
                         </div>
                         <div class="modal fade" id="save-info-employee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
