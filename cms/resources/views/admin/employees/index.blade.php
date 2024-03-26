@@ -18,7 +18,7 @@
                 </div>
             @endif
             <div class="d-flex justify-content-between my-3">
-                <a href="{{ route('employees.create') }}" class="btn btn-success"><i class="fas fa-plus-circle"></i>
+                <a href="{{ route('admin.employees.create') }}" class="btn btn-success"><i class="fas fa-plus-circle"></i>
                     Thêm mới</a>
                 <form action="{{ route('employees.index') }}" method="get">
                     <div class="input-group">

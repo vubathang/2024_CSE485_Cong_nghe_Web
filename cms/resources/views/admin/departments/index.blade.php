@@ -16,9 +16,9 @@
             </div>
         @endif
         <div class="d-flex justify-content-between my-3">
-            <a href="{{ route('departments.create') }}" class="btn btn-success"><i class="fas fa-plus-circle"></i>
+            <a href="{{ route('admin.departments.create') }}" class="btn btn-success"><i class="fas fa-plus-circle"></i>
                 Thêm mới</a>
-            <form action="{{ route('departments.index') }}" method="get">
+            <form action="{{ route('admin.departments.index') }}" method="get">
                 <div class="input-group">
                     <input type="text" class="form-control" name="search" placeholder="Tìm kiếm...">
                     <button class="btn btn-info" type="submit"><i class="fas fa-search"></i></button>

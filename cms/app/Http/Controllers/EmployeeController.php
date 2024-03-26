@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Employee;
 use App\Models\Department;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -57,14 +58,29 @@ class EmployeeController extends Controller
         $validatedData = $request->validate([
             'fullName' => 'required|max:50',
             'address' => 'required|max:100',
-            'email' => 'required|email|max:50',
             'phone' => 'required|max:15',
             'position' => 'required|max:50',
             'avatar' => 'nullable|max:100',
             'departmentId' => 'nullable|exists:departments,departmentId'
         ]);
-        Employee::create($validatedData);
-        return redirect()->route('employees.index')->with('success', 'Nhân viên đã được thêm thành công.');
+        $employee = Employee::create($validatedData);
+        $employeeId = $employee->employeeId;
+
+        $validatedU = $request->validate([
+            'email' => 'required|email|max:50',
+        ]);
+
+        $user = [
+            'email' => $request['email'],
+            'password' => 'user#123',
+            'role' => 'regular',
+            'employeeId' => $employeeId
+        ];
+
+        User::create(
+            $user
+        );
+        return redirect()->route('admin.employees.index')->with('success', 'Nhân viên đã được thêm thành công.');
     }
 
     /**
@@ -98,14 +114,13 @@ class EmployeeController extends Controller
         $validatedData = $request->validate([
             'fullName' => 'required|max:50',
             'address' => 'required|max:100',
-            'email' => 'required|email|max:50',
             'phone' => 'required|max:15',
             'position' => 'required|max:50',
             'avatar' => 'nullable|max:100',
             'departmentId' => 'nullable|exists:departments,departmentId'
         ]);
         Employee::where('employeeId', $id)->update($validatedData);
-        return redirect()->route('employees.index')->with('success', 'Nhân viên đã được cập nhật thành công.');
+        return redirect()->route('admin.employees.index')->with('success', 'Nhân viên đã được cập nhật thành công.');
     }
 
     /**
@@ -113,7 +128,8 @@ class EmployeeController extends Controller
      */
     public function destroy(string $id)
     {
+        User::where('employeeId', $id)->delete();
         Employee::destroy($id);
-        return redirect()->route('employees.index')->with('success', 'Nhân viên đã được xóa thành công.');
+        return redirect()->route('admin.employees.index')->with('success', 'Nhân viên đã được xóa thành công.');
     }
 }
